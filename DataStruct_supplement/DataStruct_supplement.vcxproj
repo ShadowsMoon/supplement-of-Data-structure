@@ -115,7 +115,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="function_sum.cpp" />
     <ClCompile Include="supplement.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="data_structe.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
