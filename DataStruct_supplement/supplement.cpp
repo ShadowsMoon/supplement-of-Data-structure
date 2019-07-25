@@ -34,15 +34,26 @@ int main()
 			L.push_back(temp % 2);
 			temp = temp>>1;
 		}
-
+		////----------------------------------------------------------------
+		//// way1:
 		//int na= L.size() - 1;
 		//for (int m = 0; m < na; m++)
 		//{
 		//	cout << L[m] << endl;
 		//}
+		////way2:
 		/*for (vector<int>::iterator iter = L.begin(); iter != L.end(); iter++)
 			cout<<*iter;
 		cout<<endl;*/
+		////way3:
+
+		//const int *f = &L.front();  const int *s = &L.back();
+		//for (; f <= s; f++)
+		//{
+		//	cout << *f << endl;
+		//}
+
+
 //-----------------------------------------------------------------------------
 
 	cin.get(); cin.get();
