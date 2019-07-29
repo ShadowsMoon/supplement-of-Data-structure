@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClCompile Include="function_sum.cpp" />
     <ClCompile Include="supplement.cpp" />
+    <ClCompile Include="supplement1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_structe.h" />
