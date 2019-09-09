@@ -60,7 +60,6 @@ Move_ve<T>::Move_ve(std::vector<T>&B, int k)
 	n = B.size();
 	n = n % k;
 
-
 }
 template<class T>
 Move_ve<T>::~Move_ve()

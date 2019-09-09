@@ -11,7 +11,7 @@
 #include"data_structe.h"
 
 
-int main()
-{
-
-};
+//int main()
+//{
+//
+//};

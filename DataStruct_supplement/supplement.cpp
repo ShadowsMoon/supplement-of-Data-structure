@@ -11,17 +11,32 @@
 using namespace std;
 int main()
 {
-	//cout << "rand(1): " << rand() % 10 << endl;     // rand产生随机整数，使用a+rand%b可得到 [a，b]范围的整数
-	//cout << "rand(2): " << rand() % 10 << endl;
-	//cout << "rand(2): " << rand() % 10 << endl;
-	//srand(time(NULL));     //srand 保证rand每次产生的随机数都不一样，因为time(NULL)为当前时间。
-	//for (int i = 0; i < 10; i++)
-	//	cout << 100 + rand() % 200 << endl;
+//	cout << "rand(1): " << rand() % 10 << endl;     // rand产生随机整数，使用a+rand%b可得到 [a，b]范围的整数
+//	cout << "rand(2): " << rand() % 10 << endl;
+//	cout << "rand(2): " << rand() % 10 << endl;
+//	srand(time(NULL));     //srand 保证rand每次产生的随机数都不一样，因为time(NULL)为当前时间。
+//	for (int i = 0; i < 10; i++)
+//		cout << 100 + rand() % 200 << endl;
+//
+
+//int main()
+//{
+//
+//	double secs;
+//	clock_t start = clock();
+//	clock_t delay = clock() - start;               //计时 使用
+//	secs = (double)delay / CLOCKS_PER_SEC;
+//	cout << "delay=: " << secs << endl;
+//	cin.get(); cin.get();
+//	return 0;
+//}
+
+
 
 	//----------1-12-判断整数的二进制1的个数-----------------------------------------------------------------------
 	//----way 1: 复杂度：o(log(n))-------------------
 	//int n = 441; int ones = 0; int m;
-	//m = n >> 1;
+	//m = n >> 1;    // is equal to /
 	//cout << m << endl;
 	//while (0 < n)
 	//{
@@ -80,10 +95,10 @@ int main()
 //-------------------------reverse------------------------------
 	vector<int>a = { 5,4,3,2,1 }; 
 	Reverse<int> rev(a, 5);
- //   for(int i=0;i<5;i++)
-	//{
-	//	cout << a.at(i) << "  "<<endl;
-	//}
-	cin.get(); cin.get();
+    for(int i=0;i<5;i++)
+	{
+		cout << a.at(i) << "  "<<endl;
+	}
+    cin.get(); cin.get();
 	return 0;
 }
