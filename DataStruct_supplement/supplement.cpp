@@ -9,8 +9,8 @@
 #include<vector>
 #include"data_structe.h"
 using namespace std;
-int main()
-{
+//int main()
+//{
 //	cout << "rand(1): " << rand() % 10 << endl;     // rand产生随机整数，使用a+rand%b可得到 [a，b]范围的整数
 //	cout << "rand(2): " << rand() % 10 << endl;
 //	cout << "rand(2): " << rand() % 10 << endl;
@@ -92,13 +92,19 @@ int main()
 	//int a = 16;
 	//if (!(a & 1)) { cout << "偶数" << endl; };
 //----------------------------------------------------------------------------------------
-//-------------------------reverse------------------------------
-	vector<int>a = { 5,4,3,2,1 }; 
-	Reverse<int> rev(a, 5);
-    for(int i=0;i<5;i++)
-	{
-		cout << a.at(i) << "  "<<endl;
-	}
-    cin.get(); cin.get();
-	return 0;
-}
+
+
+//------------动态空间------------------------------
+//int main()
+//{
+//	vector<int>a = { 1,2,3,4,5 };
+//	vector<int>b(5);                      //directly copy  is same as array
+//	b = a;
+//	for (vector<int>::iterator iter = a.begin(); iter < a.end(); iter++)
+//		cout << *iter << endl;
+//	for (auto it = b.begin(); it < b.end(); it++)
+//		cout << *it << endl;
+//
+//	cin.get(); cin.get();
+//	return 0;
+//}

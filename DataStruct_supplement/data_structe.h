@@ -36,36 +36,7 @@ void Reverse<T>:: rev2(std::vector<T>A, int a, int b)
 	a_final.assign(A.begin(), A.end());
 	std::cout << a_final.at(0);
 }
-//----------类模板 重载，构造，析构测试---------------------------对数组向左移动K位
-template<class T>
-class Move_ve
-{
-private:
-	int n,lo, hi;
-public:
-	Move_ve();
-	Move_ve(std::vector<T>&B, int k);
-	~Move_ve();
-};
 
-template<class T>
-Move_ve<T>::Move_ve()
-{
-	std::cout << " Initialization the class" << std::endl;
-	n = 0; lo = 0; hi = 0;
-}
-template<class T>
-Move_ve<T>::Move_ve(std::vector<T>&B, int k)
-{
-	n = B.size();
-	n = n % k;
-
-}
-template<class T>
-Move_ve<T>::~Move_ve()
-{
-	std::cout << "finish" << std::endl;
-}
 
 
 #endif
