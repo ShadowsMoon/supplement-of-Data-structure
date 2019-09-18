@@ -15,16 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="supplement.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="function_sum.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="supplement1.cpp">
+    <ClCompile Include="algorithm_collect.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="test.cpp">
+    <ClCompile Include="grammar_supplement.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm_sup.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

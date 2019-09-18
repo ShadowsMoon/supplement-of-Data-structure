@@ -116,9 +116,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="function_sum.cpp" />
-    <ClCompile Include="supplement.cpp" />
-    <ClCompile Include="supplement1.cpp" />
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="grammar_supplement.cpp" />
+    <ClCompile Include="algorithm_sup.cpp" />
+    <ClCompile Include="algorithm_collect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_structe.h" />
