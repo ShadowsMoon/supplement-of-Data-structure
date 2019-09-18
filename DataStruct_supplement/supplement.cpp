@@ -2,11 +2,13 @@
 #include<iostream>
 #include<stdio.h>
 #include<string>
-#include   <stdlib.h>  
+#include<cstring>
+#include<stdlib.h>  
 #include<ctime>
 #include<list>
 #include<array>
 #include<vector>
+#include<stack>
 #include"data_structe.h"
 using namespace std;
 //int main()
@@ -54,16 +56,16 @@ using namespace std;
 	//-----------------------------------------------------------------------------------------------------------
 
 	//--------使用容器将整数转换二进制------------------------------------------------------------------------
-    	/*int temp; int n = 441;
-		temp = n;
-		vector<int>L;
-		while (temp != 0)
-		{
-			L.push_back(temp % 2);
-			temp = temp>>1;
-		}*/
-		////-------------------------将vector内容全部打印---------------------------------------
-		//// way1:
+  //  	int temp; int n = 8;
+		//temp = n;
+		//vector<int>L;
+		//while (temp != 0)
+		//{
+		//	L.push_back(temp % 2);
+		//	temp = temp>>1;
+		//}
+		//////-------------------------将vector内容全部打印---------------------------------------
+		////// way1:
 		//int na= L.size() - 1;
 		//for (int m = 0; m < na; m++)
 		//{
@@ -108,3 +110,104 @@ using namespace std;
 //	cin.get(); cin.get();
 //	return 0;
 //}
+
+//---------------------------------
+//template <typename T>bool ct(T a, T b) 
+//{
+//	return a < b;
+//};//less than
+//int main()
+//{
+//	list<int> list1(10);
+//	vector<int>v1 = { 2,1,3,9,4,6,8,10 };
+//	for (auto i = v1.begin(); i < v1.end(); i++)
+//	{
+//		if (ct(*i, 8)) {
+//			list1.push_back(*i);
+//		}
+//	}
+//	cin.get(); cin.get();
+//	return 0;
+//}
+
+
+
+//----------------栈举例----------------------------------------------------//
+//stack<char>& cvt(stack<char>&s, int n, int base)
+//{
+//	char digit[] = { '0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F' };
+//	while (n > 0)
+//	{
+//		s.push(digit[n%base]);
+//		n = n / base;
+//	}
+//	return s;
+//}
+//
+//int main()
+//{
+//	stack<char> s;
+//	stack<char>s1 = cvt(s, 58, 2);
+// //   s1.pop();     //s1 不完整的数据类型，无法完成实例操作
+//	while (!s1.empty())
+//	{
+//		//printf("c%", s1.pop());  //直接pop打印会出错
+//		cout << s1.top() << endl;  // top表示栈顶的引用
+//		s1.pop();
+//	}
+//	//s.push('1');
+//	//char a = s.top();
+//	//cout << a << endl;
+//	cin.get(); cin.get();
+//	return 0;
+//}
+//-------------------------------------------------------------------------------------//
+
+
+//---------------------------------------串匹配------------------------------------//
+//
+//typedef  int Size_t;
+//int main()
+//{
+//	char a = 's';  //字符串和字符常量有本质区别。
+//	char an[10] = "beat";
+//	const char *p= "abaabbabaab" ; //字符串实际上表示的是地址，因此将地址付给指针//字符串字面值是常量，因此使用const
+//	Size_t  m = strlen(p),j=0;
+//	int *N = new int[m];
+//	int t = N[0] = -1;
+//	while (j < m - 1)
+//		if (0 > t || p[j] == p[t])
+//			N[++j] = ++t;
+//		else//
+//			t = N[t];
+//	for (int i = 0; i <= m; i++)
+//		cout << N[i] << endl;
+//	cin.get(); cin.get();
+//	return 0;
+//}
+//------------------------------------------------
+//int main()
+//{
+//	const char *B= "abaabbabaab";
+//	Size_t  m = strlen(B);
+//    int *F = new int[m];
+//	int t = F[0] = -1;
+//	for (int i = 1; i < m; i++)
+//	{
+//		int j = F[i - 1];
+//		while ((B[j + 1] != B[i]) && (j >= 0))
+//			j = F[j];
+//		if (B[j + 1] == B[i])
+//			F[i] = j + 1;
+//		else
+//			F[i] = -1;
+//	}
+//		for (int i = 0; i <m; i++)
+//		    cout << F[i] << endl;
+//	cin.get(); cin.get();
+//	return 0;
+//}
+
+
+
+//
