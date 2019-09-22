@@ -147,6 +147,7 @@ using namespace std;
 //int main()
 //{
 //	stack<char> s;
+//	stack<char>b;
 //	stack<char>s1 = cvt(s, 58, 2);
 // //   s1.pop();     //s1 不完整的数据类型，无法完成实例操作
 //	while (!s1.empty())
@@ -162,6 +163,54 @@ using namespace std;
 //	return 0;
 //}
 //-------------------------------------------------------------------------------------//
+
+// char  compare string//
+
+//int main()
+//{
+//
+//	const char * a = "string1";      //常量char型，无法修改内容，但可以修改指向的地址
+//	char b[] = "string2";
+//	cout << "a: " << a << endl;
+//	a = b;
+//	a = a + 1;       //可通过该方法来近似删除首数据
+//	cout << "a: " << a << endl;
+//	int a_len = strlen(a);
+//	cout << "a_len: " << a_len << endl;
+//	//给定另一个char数组，将a的部分赋值的方法，注意末尾必须为   '\0'
+//	char at[10]; 
+//	int i = 0;
+//	for (; i < a_len - 2; i++)
+//	{
+//		at[i] = *a; a++;
+//	}
+//	for (; i < 10-1; i++)
+//	{
+//		at[i] = '\0';
+//	}
+//	cout << at << endl;
+//	const char* co = nullptr;   //赋值为空
+//	
+//	//------------------string --------------------------------------------------------------//
+//
+//	string a1 = { "string1" };
+//	string b1 = nullptr;
+//	string str = "HelloWorld!";     //初始化string类型，并具体赋值
+//	const char* constc = nullptr;         //初始化const char*类型，并赋值为空
+//	constc = str.c_str();                 //string类型转const char*类型
+//	cout << constc << endl;
+//
+//
+//	const char* cab = "Hello World!";     //初始化const char* 类型，并具体赋值
+//	string strr;                        //初始化string类型
+//	strr = cab;  //const char*类型转string类型
+//	cout << str << endl;
+//
+//	cin.get(); cin.get();
+//}
+
+
+
 
 
 //---------------------------------------串匹配------------------------------------//
@@ -212,12 +261,12 @@ using namespace std;
 //argv 是 argument vector的缩写，表示传入main函数的参数序列或指针，并且第一个参数argv[0]一定是程序的名称，
 //并且包含了程序所在的完整路径，所以确切的说需要我们输入的main函数的参数个数应该是argc-1个；
 //argc 是 argument count的缩写，表示传入main函数的参数个数；
-void main(int argc, char *argv[])    
-{
-	for (int i = 0; i < argc; i++)
-	{
-		cout << i << ": " << argv[i] << endl;
-	}
-	system("pause");
-}
+//void main(int argc, char *argv[])    
+//{
+//	for (int i = 0; i < argc; i++)
+//	{
+//		cout << i << ": " << argv[i] << endl;
+//	}
+//	system("pause");
+//}
 

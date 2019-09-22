@@ -76,6 +76,40 @@ using namespace std;
 //	return 0;
 //}
 
+//-----------------stack 括号匹配问题：判断括号是否匹配？---------------//
+//思想：去掉紧邻的括号对不影响该括号序列的状态，（去掉紧邻的方式可用栈来实现）
+//思考：用计数器计数的方式也可以实现，但是对多个不同类型匹配问题就不行，而栈依然有效
+//bool paren(const char exp[], int lo, int hi)
+//{
+//	stack<char>ju;
+//	for (int i = lo; i < hi; i++)
+//		if (exp[i] == '(')
+//			ju.push(exp[i]);
+//		else if (exp[i] == ')')
+//		{
+//			if (!ju.empty())
+//				ju.pop();
+//			else
+//				return false;
+//			   //break;
+//		}
+//		else
+//			cout << ju.size() << endl;
+//	return  ju.empty();
+//}
+//
+//int main()
+//{
+//	char exp1[] = { "((adc)dcv)bdbsvsm(jhm)" };
+//   string exp2 = { "((adc)dcv)bdb)svsm(jhm)" };
+//	bool li1 = paren(exp1, 0, strlen(exp1));
+//	cout << "final judgement: " << li1 << endl;   //false:li1=0  
+//	cin.get(); cin.get();
+//
+//}
+
+
+
 //-----蛮力算法实现串匹配-------------------------------//
 //typedef int Size_t;
 //int main()
@@ -104,3 +138,49 @@ using namespace std;
 //}
 
 //**********way 2*************************//
+
+
+//
+//#include <iostream>
+//using namespace std;
+//int chu_yue(int x, int y)
+//{
+//	int z = y;
+//	while (x%y != 0)
+//	{
+//		z = x % y;
+//		x = y;
+//		y = z;
+//	}
+//	return z;
+//}
+//
+//int chu_bei(int x, int y)
+//{
+//	int a = 0, b = 0;
+//	int temp = 0;
+//	if (x < y)
+//	{
+//		temp = x;
+//		x = y;
+//		y = temp;
+//	}
+//	a = x * y;
+//	while (y != 0)
+//	{
+//		b = x % y;
+//		x = y;
+//		y = b;
+//	}
+//	return a / x;
+//
+//}
+//int main() {
+//	int x, y, z;
+//	cout << "请输入3个正整数 中间用空格隔开" << endl;
+//	cin >> x >> y;
+//	cout << "使用辗转相除求最大公约数得 " << chu_yue(x, y) << endl;          //辗转相除求最大公约数 
+//	cout << "使用辗转相除求最小公倍数得 " << chu_bei(x, y) << endl;   //辗转相除求最小公倍数 
+//	cin.get(); cin.get();
+//	return 0;
+//}
