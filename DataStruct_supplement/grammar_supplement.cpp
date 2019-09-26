@@ -1,7 +1,7 @@
 //课后习题作业以及相应知识点补充
 #include<iostream>
 #include<stdio.h>
-#include<string>
+#include<string.h>
 #include<cstring>
 #include<stdlib.h>  
 #include<ctime>
@@ -130,8 +130,50 @@ using namespace std;
 //	return 0;
 //}
 
+//列表生成方式：（举例）
+//struct listnode
+//{
+//	int val;
+//	listnode *next;
+//};
+//int main()
+//{
+//	listnode *head, *pre;  //头指向第一个
+//	head = nullptr; pre = nullptr;
+//	int a;
+//	for (int i = 0; i < 5; i++)   //长度为5的列表
+//	{
+//		listnode *mi = new listnode;
+//		cin >> a;
+//		(*mi).val = a;
+//		(*mi).next = nullptr;
+//		if (head == nullptr)
+//			head = mi;
+//		else
+//			pre->next = mi;
+//		pre = mi;
+//	}
+//	while (head)
+//	{
+//		cout << head->val << " ";
+//		head = head->next;
+//	}
+//	cin.get(); cin.get();
+//}
 
-
+//------------------------------指针长度--------------------------
+//int main()
+//{
+//	char a[] = { 'a','b' };
+//	int b[] = { 1,2 };
+//	char *a1 = a;
+//	int  *b1 = b;
+//	cout << "size of a:"<<sizeof(a) << endl;
+//	cout << "size of *a:"<<sizeof(a1)<<endl;   //指针都是四个字节，和类型无关
+//	cout << "size of b:" << sizeof(b) << endl;
+//	cout << "size of *b:" << sizeof(b1) << endl;
+//	cin.get(); cin.get();
+//}
 //----------------栈举例----------------------------------------------------//
 //stack<char>& cvt(stack<char>&s, int n, int base)
 //{
@@ -190,24 +232,99 @@ using namespace std;
 //	}
 //	cout << at << endl;
 //	const char* co = nullptr;   //赋值为空
-//	
-//	//------------------string --------------------------------------------------------------//
+
+	//------------------string --------------------------------------------------------------//
+
+	//string a1 = { "string1" };
+	//string b1 = nullptr;
+	//string str = "HelloWorld!";     //初始化string类型，并具体赋值
+	//const char* constc = nullptr;         //初始化const char*类型，并赋值为空
+	//constc = str.c_str();                 //string类型转const char*类型
+	//cout << constc << endl;
+
+
+	//const char* cab = "Hello World!";     //初始化const char* 类型，并具体赋值
+	//string strr;                        //初始化string类型
+	//strr = cab;  //const char*类型转string类型
+	//cout << str << endl;
+
+//	cin.get(); cin.get();
+//}
+
+// char operator
+//int main()
+//{
+//	//char a1[] = "abc def";
+//	//char a2[] = "gh";
+//	//strcpy_s(a1, a2);   //将a2复制到a1   // strcpy(a1, a2);  old version 
+//	//cout << a1 << endl;
+//	//cout << strlen(a1) << endl;
+//	char b1[] = "abc def";
+//	char b2[] = "   a";
+//	//strcat(b1, b2);                   //old version
+//	int len = strlen(b1) + strlen(b2) + 1;
+//	strcat_s(b1, len, b2);
+//	cout << b1 << endl;
+//	cout << strlen(b1) << endl;
+//	char *b12 = b1 + strlen(b1)-1;
+//	char *b11 = b1 + 4;
+//	cout << b11 << endl;
+//	cout<< b12 << endl;
+//	char b3[100]= "abcdfegh";      //定义了100，但实际上还是8，因为处理字符串的函数根据空字符的位置，而不是数组长度来进行处理。
+//	cout <<"length: "<< strlen(b3) << endl;
+//	char b4[] = "ab\0cd";
+//	cout << "b4 length: " << strlen(b4) << endl;
 //
-//	string a1 = { "string1" };
-//	string b1 = nullptr;
-//	string str = "HelloWorld!";     //初始化string类型，并具体赋值
-//	const char* constc = nullptr;         //初始化const char*类型，并赋值为空
-//	constc = str.c_str();                 //string类型转const char*类型
-//	cout << constc << endl;
-//
-//
-//	const char* cab = "Hello World!";     //初始化const char* 类型，并具体赋值
-//	string strr;                        //初始化string类型
-//	strr = cab;  //const char*类型转string类型
-//	cout << str << endl;
 //
 //	cin.get(); cin.get();
 //}
+
+
+
+//--------------------------------------------------//
+//argv 是 argument vector的缩写，表示传入main函数的参数序列或指针，并且第一个参数argv[0]一定是程序的名称，
+//并且包含了程序所在的完整路径，所以确切的说需要我们输入的main函数的参数个数应该是argc-1个；
+//argc 是 argument count的缩写，表示传入main函数的参数个数；
+//void main(int argc, char *argv[])    
+//{
+//	for (int i = 0; i < argc; i++)
+//	{
+//		cout << i << ": " << argv[i] << endl;
+//	}
+//	system("pause");
+//}
+
+//---------------------------二维数组---------------------
+//int main()
+//{
+//	vector<int>a = { 1,2,3,4 };
+//	vector<vector<int> >array1(3, vector<int>(4));
+//	int row = array1.size();
+//	int coul = array1[0].size();
+//	cout << "row: " << row << " coul: " << coul;
+//	array1[0] = a;
+//	cout << array1[0][2] << endl;
+//	cin.get(); cin.get();
+//}
+
+
+//---------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -256,17 +373,3 @@ using namespace std;
 //	cin.get(); cin.get();
 //	return 0;
 //}
-
-//--------------------------------------------------//
-//argv 是 argument vector的缩写，表示传入main函数的参数序列或指针，并且第一个参数argv[0]一定是程序的名称，
-//并且包含了程序所在的完整路径，所以确切的说需要我们输入的main函数的参数个数应该是argc-1个；
-//argc 是 argument count的缩写，表示传入main函数的参数个数；
-//void main(int argc, char *argv[])    
-//{
-//	for (int i = 0; i < argc; i++)
-//	{
-//		cout << i << ": " << argv[i] << endl;
-//	}
-//	system("pause");
-//}
-

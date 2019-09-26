@@ -76,6 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalOptions>/D "_CRT_SECURE_NO_DEPRECATE" %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -119,6 +120,7 @@
     <ClCompile Include="grammar_supplement.cpp" />
     <ClCompile Include="algorithm_sup.cpp" />
     <ClCompile Include="algorithm_collect.cpp" />
+    <ClCompile Include="offfer_67.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_structe.h" />
