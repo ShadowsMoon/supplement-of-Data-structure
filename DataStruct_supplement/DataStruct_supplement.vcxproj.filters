@@ -21,13 +21,22 @@
     <ClCompile Include="algorithm_collect.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="grammar_supplement.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="algorithm_sup.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="offfer_67.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="list_operated.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="array_vector_operated.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="binarytree_op.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stack_queue_op.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="string_operated.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

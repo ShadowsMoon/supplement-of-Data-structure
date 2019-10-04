@@ -116,11 +116,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="binarytree_op.cpp" />
     <ClCompile Include="function_sum.cpp" />
-    <ClCompile Include="grammar_supplement.cpp" />
-    <ClCompile Include="algorithm_sup.cpp" />
     <ClCompile Include="algorithm_collect.cpp" />
+    <ClCompile Include="list_operated.cpp" />
     <ClCompile Include="offfer_67.cpp" />
+    <ClCompile Include="array_vector_operated.cpp" />
+    <ClCompile Include="stack_queue_op.cpp" />
+    <ClCompile Include="string_operated.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_structe.h" />

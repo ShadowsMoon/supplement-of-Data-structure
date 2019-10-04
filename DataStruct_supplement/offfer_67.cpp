@@ -49,3 +49,64 @@
 //}
 
 
+//------------------链表：从尾到头打印----------------//
+// 1,使用栈， 2，使用递归（若长度很长，可能会导致函数调用栈溢出）
+//#include<stack>
+//
+//struct Listnode {
+//	char val;
+//	Listnode *next;
+//};
+//std::vector<char> printListver(Listnode *phead)
+//{
+//	std::stack<char> midlist;
+//	std::vector<char> fin;
+//	if (phead == nullptr)
+//		return fin;
+//	while (phead)
+//	{
+//		midlist.push(phead->val);
+//		phead = phead->next;
+//	}
+//	int listlen = midlist.size();
+//	for (int i = 0; i < listlen; i++)
+//	{
+//		std::cout << midlist.top() << std::endl;
+//		fin.push_back( midlist.top());                  //if using fin[i] would be wrong!!
+//		midlist.pop();
+//	}
+//	return fin;
+//}
+//
+//int main()
+//{
+//	int len;
+//	std::cin >> len;
+//	Listnode *phead = nullptr;
+//	Listnode *pre = nullptr;
+//	for (int i = 0; i < len; i++)
+//	{
+//		char a;
+//		std::cin >> a;
+//		Listnode *pnew = new Listnode;
+//		pnew->val = a;
+//		pnew->next = nullptr;
+//		if (phead == nullptr)
+//		{
+//			phead = pnew; pre = pnew;
+//		}
+//		else
+//		{
+//			Listnode *pnode = pnew;
+//			pre->next = pnode;
+//			pre = pnode;
+//		}	
+//	}
+//	//while (phead)
+//	//{
+//	//	std::cout << phead->val <<std::endl;
+//	//	phead = phead->next;
+//	//}
+//	std::vector<char>a=printListver(phead);
+//	std::cin.get(); std::cin.get();
+//}
