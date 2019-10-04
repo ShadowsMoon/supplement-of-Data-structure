@@ -1,7 +1,7 @@
 
 #include<vector>
 #include<iostream>
-
+#include<stdio.h>
 //--------------------------------------------------------字符串类----------------------------------------------//
 // 空格替换  (考虑string方式）
 //void replaceSpace(char *str, int length)
@@ -110,3 +110,71 @@
 //	std::vector<char>a=printListver(phead);
 //	std::cin.get(); std::cin.get();
 //}
+
+//-----二叉树重建----------------------------------------------------------------//
+using std::cout; using std::cin; using std::endl;
+struct BinaryTreeNode
+{
+	int val;
+	BinaryTreeNode *left;
+	BinaryTreeNode *right;
+};
+//核心思想：前序遍历第一个必为根节点，中序遍历根节点左边为左子树，右边为右子树，依据递归来减小内容
+BinaryTreeNode *constructcore(int *startpreod, int *endpreod, int *startinod, int *endinod);
+BinaryTreeNode *construct(int* preorder, int* inorder, int length)
+{
+	if (preorder == nullptr || inorder == nullptr || length <= 0)
+		return nullptr;
+	return constructcore(preorder, preorder + length - 1, inorder, inorder + length - 1);
+}
+BinaryTreeNode *constructcore(int *startpreod, int *endpreod, int *startinod, int *endinod)
+{
+	//前序遍历第一个值为根节点
+	int rootval = startpreod[0];
+	BinaryTreeNode *root = new BinaryTreeNode;
+	root->val = rootval;
+	root->left = nullptr; root->right = nullptr;
+	if (startpreod == endpreod)
+		return root;
+	//中序遍历找到根节点，就能区分左子树和右子树
+	int *rootinod = startinod;
+	while (rootinod <= endinod && *rootinod != rootval)
+		++rootinod;
+	//if()
+	int leftlength = rootinod - startinod;
+	int *leftendpreod=startpreod+leftlength;
+	if (leftlength > 0)   //注意与第二个判断语句的不同，主要原因 ：左右的区别
+	{
+		root->left = constructcore(startpreod + 1, leftendpreod, startinod, rootinod - 1);
+	}
+	if (leftlength < endpreod - startpreod)
+	{
+		root->right = constructcore(leftendpreod + 1, endpreod, rootinod + 1, endinod);
+	}
+	return root;
+}
+//递归终止条件需进一步思考
+void FirstOrder(BinaryTreeNode *pf)     //先序排列（递归版本）
+{
+	if (pf == nullptr)
+		return;
+	cout << pf->val << endl;
+	FirstOrder(pf->left);
+	FirstOrder(pf->right);
+}
+
+
+int main()
+{
+	int preord[] = { 1,2,4,7,3,5,6,8 };
+	int inord[] = { 4,7,2,1,5,3,8,6 };
+	int len = sizeof(preord) / sizeof(int);
+	BinaryTreeNode *p = construct(preord, inord, len);
+	cout << "the original pre: " << endl;
+	for (int i = 0; i < len;i++)
+		cout << preord[i] << " ";
+	cout << "the final pre:" << endl;
+	FirstOrder(p);
+	cin.get(); cin.get();
+
+}
