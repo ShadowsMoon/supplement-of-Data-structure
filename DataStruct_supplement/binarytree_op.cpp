@@ -60,12 +60,34 @@
 //	FirstOrder(pf->left);
 //	FirstOrder(pf->right);
 //}
+////中序遍历：非递归版本：
+////一直沿着左侧链扫描并加入栈
+//void goLeftBranch(BinaryTreeNode  *x, std::stack<BinaryTreeNode*>& s)
+//{
+//	while (x!=nullptr)
+//	{
+//		s.push(x); x = x->left;
+//	}
+//}
+//void Inorder(BinaryTreeNode *pf)
+//{
+//	std::stack<BinaryTreeNode*>S;
+//	BinaryTreeNode *currentx;
+//	while (true)
+//	{
+//		goLeftBranch(pf, S);
+//		if (S.empty()) break;      //S为空时为真
+//		currentx = S.top(); cout << currentx->value << " ";
+//		pf = currentx->right;   S.pop();
+//	}
+//}
 //int main()
 //{
 //	BinaryTreeNode *p1,*p2;
 //	//p1 = creaBinTree1();
 //	p2 = creaBinTree2();
-//	FirstOrder(p2);
+//	//FirstOrder(p2);
+//	Inorder(p2);
 //	cin.get(); cin.get();
 //}
 
