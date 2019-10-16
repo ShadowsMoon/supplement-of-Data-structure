@@ -2,10 +2,11 @@
 #include<stack>
 #include<vector>
 #include<iostream>
+#include <exception>
+#include"data_structe.h"
 
-
-
-//----------------栈举例----------------------------------------------------//
+using namespace std;
+////----------------栈举例----------------------------------------------------//
 //stack<char>& cvt(stack<char>&s, int n, int base)
 //{
 //	char digit[] = { '0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F' };
@@ -39,31 +40,6 @@
 
 
 
-//-----------------stack 实例：10进制转换n进制---------------------------------------------------------------//
-
-//stack<char>& cvt(stack<char>&s, int n, int base)
-//{
-//	char digit[] = { '0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F' };
-//	while (n>0)
-//	{
-//		s.push(digit[n%base]);
-//		n = n / base;
-//	}
-//	return s;
-//}
-//
-// int main()
-//{
-//	stack<char> s;
-//   stack<char>s1= cvt(s, 58, 2);
-//	while (!s1.empty())
-//	{
-//		printf("c%", s1.pop());
-//		//cout << s1.pop() << endl;
-//	}
-//	cin.get(); cin.get();
-//	return 0;
-//}
 
 //-----------------stack 括号匹配问题：判断括号是否匹配？---------------//
 //思想：去掉紧邻的括号对不影响该括号序列的状态，（去掉紧邻的方式可用栈来实现）
@@ -96,3 +72,36 @@
 //	cin.get(); cin.get();
 //
 //}
+
+
+
+int main()
+{
+
+	char ch[] = {'a','b','c','d','e'};
+	Cqueue<char> test;       //与非类模板的区别为没有参数类型列表：<char>
+	for (int i = 0; i < 5; i++)
+	{
+		test.appendTail(ch[i]);
+	}
+	char testnode = test.deleteHead();
+	if (testnode == 'a')
+		cout << "true" << endl;
+	else
+		cout << "false" << endl;
+	 testnode = test.deleteHead();
+	if (testnode == 'b')
+		cout << "true" << endl;
+	else
+		cout << "false" << endl;
+	test.appendTail('A');
+	testnode = test.deleteHead();
+	if (testnode == 'c')
+		cout << "true" << endl;
+	else
+		cout << "false" << endl;
+	cin.get(); cin.get();
+}
+
+
+

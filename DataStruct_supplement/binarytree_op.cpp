@@ -60,6 +60,43 @@
 //	FirstOrder(pf->left);
 //	FirstOrder(pf->right);
 //}
+////先序遍历迭代版本    注意对照与书本的区别
+//void Firstorderiter(BinaryTreeNode *pf)
+//{
+//	std::stack<BinaryTreeNode*> st;
+//	BinaryTreeNode *currentnode;
+//	cout<<pf->value<<' ';
+//	st.push(pf->right);
+//	currentnode = pf->left;
+//	while (!st.empty())
+//	{
+//		if (currentnode != nullptr)
+//		{
+//			cout << currentnode->value << ' ';
+//			st.push(currentnode->right);
+//			currentnode = currentnode->left;
+//		}
+//		else
+//		{
+//			currentnode = st.top();   st.pop();
+//			while (!currentnode&&!st.empty())
+//			{
+//				currentnode = st.top();   st.pop();
+//			}
+//			if (!st.empty()|| currentnode!=nullptr)
+//			{
+//				cout << currentnode->value << ' ';
+//				st.push(currentnode->right);
+//				currentnode = currentnode->left;
+//			}
+//			else
+//				break;
+//		}
+//
+//	}
+//}
+//
+////
 ////中序遍历：非递归版本：
 ////一直沿着左侧链扫描并加入栈
 //void goLeftBranch(BinaryTreeNode  *x, std::stack<BinaryTreeNode*>& s)
@@ -71,7 +108,7 @@
 //}
 //void Inorder(BinaryTreeNode *pf)
 //{
-//	std::stack<BinaryTreeNode*>S;
+//	std::stack<BinaryTreeNode*>S;        //栈里面是二叉树结构的指针
 //	BinaryTreeNode *currentx;
 //	while (true)
 //	{
@@ -86,8 +123,8 @@
 //	BinaryTreeNode *p1,*p2;
 //	//p1 = creaBinTree1();
 //	p2 = creaBinTree2();
-//	//FirstOrder(p2);
-//	Inorder(p2);
+//	Firstorderiter(p2);
+//	//Inorder(p2);
 //	cin.get(); cin.get();
 //}
-
+//
