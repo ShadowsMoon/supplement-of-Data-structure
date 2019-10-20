@@ -75,33 +75,33 @@ using namespace std;
 
 
 
-int main()
-{
-
-	char ch[] = {'a','b','c','d','e'};
-	Cqueue<char> test;       //与非类模板的区别为没有参数类型列表：<char>
-	for (int i = 0; i < 5; i++)
-	{
-		test.appendTail(ch[i]);
-	}
-	char testnode = test.deleteHead();
-	if (testnode == 'a')
-		cout << "true" << endl;
-	else
-		cout << "false" << endl;
-	 testnode = test.deleteHead();
-	if (testnode == 'b')
-		cout << "true" << endl;
-	else
-		cout << "false" << endl;
-	test.appendTail('A');
-	testnode = test.deleteHead();
-	if (testnode == 'c')
-		cout << "true" << endl;
-	else
-		cout << "false" << endl;
-	cin.get(); cin.get();
-}
+//int main()
+//{
+//
+//	char ch[] = {'a','b','c','d','e'};
+//	Cqueue<char> test;       //与非类模板的区别为没有参数类型列表：<char>
+//	for (int i = 0; i < 5; i++)
+//	{
+//		test.appendTail(ch[i]);
+//	}
+//	char testnode = test.deleteHead();    
+//	if (testnode == 'a')
+//		cout << "true" << endl;
+//	else
+//		cout << "false" << endl;
+//	 testnode = test.deleteHead();
+//	if (testnode == 'b')
+//		cout << "true" << endl;
+//	else
+//		cout << "false" << endl;
+//	test.appendTail('A');
+//	testnode = test.deleteHead();
+//	if (testnode == 'c')
+//		cout << "true" << endl;
+//	else
+//		cout << "false" << endl;
+//	cin.get(); cin.get();
+//}
 
 
 

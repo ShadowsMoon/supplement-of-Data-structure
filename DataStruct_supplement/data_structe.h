@@ -44,21 +44,21 @@ void Reverse<T>:: rev2(std::vector<T>A, int a, int b)
 template<typename T>class Cqueue
 {
 public:
-	Cqueue(void) ;
-	~Cqueue(void) ;
+	Cqueue(void) {};
+	~Cqueue(void) {};
 	void appendTail(const T& node);
 	T deleteHead();
 private:
 	std::stack<T>s1;      //stack 需要有相应的头文件和作用域解析运算符，否则出错
 	std::stack<T>s2;
 };
-template <typename T> Cqueue<T>::Cqueue(void)
-{
-}
-
-template <typename T> Cqueue<T>::~Cqueue(void)
-{
-}
+//template <typename T> Cqueue<T>::Cqueue(void)
+//{
+//}
+//
+//template <typename T> Cqueue<T>::~Cqueue(void)
+//{
+//}
 //队列类操作
 template<typename T>void Cqueue<T>::appendTail(const T& ele)   //模板类与类格式的差异
 {
