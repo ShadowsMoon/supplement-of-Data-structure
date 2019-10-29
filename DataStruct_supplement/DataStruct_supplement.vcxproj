@@ -120,7 +120,8 @@
     <ClCompile Include="function_sum.cpp" />
     <ClCompile Include="algorithm_collect.cpp" />
     <ClCompile Include="list_operated.cpp" />
-    <ClCompile Include="offfer_67.cpp" />
+    <ClCompile Include="offer67_algorithm.cpp" />
+    <ClCompile Include="offfer_67_datastr.cpp" />
     <ClCompile Include="array_vector_operated.cpp" />
     <ClCompile Include="stack_queue_op.cpp" />
     <ClCompile Include="string_operated.cpp" />

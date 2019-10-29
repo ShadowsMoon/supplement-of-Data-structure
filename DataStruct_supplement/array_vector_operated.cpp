@@ -131,6 +131,26 @@ using namespace std;
 
 //
 
+//int main()
+//{
+//	vector<int>a = { 1,2,3,4,5 };
+//	vector<int>b = { 2,3,4,5,6,7,8 };
+//	vector<int>c;
+//	vector<int>::iterator iter = a.begin();
+//	while (*iter != 4)
+//		iter++;
+//	int length = iter - a.begin();
+//	vector<int>::iterator bb = b.begin() + length;
+//	cout << *(bb+1)<< endl;
+//	cout << *(b.begin()) << endl;
+//	cout << *(b.end()-1) << endl;
+//	/*cout << *(iter + 1) << endl;
+//	cout << c.size() << endl;*/
+//	cin.get(); cin.get();
+//}
+
+
+
 
 
 

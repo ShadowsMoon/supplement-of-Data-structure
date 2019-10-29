@@ -21,9 +21,6 @@
     <ClCompile Include="algorithm_collect.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="offfer_67.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="list_operated.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -37,6 +34,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="string_operated.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="offer67_algorithm.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="offfer_67_datastr.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
