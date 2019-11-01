@@ -102,7 +102,8 @@ using namespace std;
 //	system("pause");
 //}
 
-
+//#include <iomanip>  
+//cout << setiosflags(ios::fixed) << setprecision(2) << a << endl;  小数点保持两位
 
 
 

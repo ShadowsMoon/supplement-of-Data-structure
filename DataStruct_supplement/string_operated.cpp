@@ -52,27 +52,28 @@ using namespace std;
 // char operator
 //int main()
 //{
-//	//char a1[] = "abc def";
-//	//char a2[] = "gh";
-//	//strcpy_s(a1, a2);   //将a2复制到a1   // strcpy(a1, a2);  old version 
-//	//cout << a1 << endl;
-//	//cout << strlen(a1) << endl;
-//	char b1[] = "abc def";
-//	char b2[] = "   a";
-//	//strcat(b1, b2);                   //old version
-//	int len = strlen(b1) + strlen(b2) + 1;
-//	strcat_s(b1, len, b2);
-//	cout << b1 << endl;
-//	cout << strlen(b1) << endl;
-//	char *b12 = b1 + strlen(b1)-1;
-//	char *b11 = b1 + 4;
-//	cout << b11 << endl;
-//	cout<< b12 << endl;
-//	char b3[100]= "abcdfegh";      //定义了100，但实际上还是8，因为处理字符串的函数根据空字符的位置，而不是数组长度来进行处理。
-//	cout <<"length: "<< strlen(b3) << endl;
-//	char b4[] = "ab\0cd";
-//	cout << "b4 length: " << strlen(b4) << endl;
-//
+	//char a1[] = "abc def";
+	//char a2[] = "gh";
+	//strcpy_s(a1, a2);   //将a2复制到a1   // strcpy(a1, a2);  old version 
+	//cout << a1 << endl;
+	//cout << strlen(a1) << endl;
+	//char b1[] = "abc def";
+	//char b2[] = "   a";
+	//cout << strlen(b2) << endl;
+	////strcat(b1, b2);                   //old version
+	//int len = strlen(b1) + strlen(b2) + 1;
+	//strcat_s(b1, len, b2);
+	//cout << b1 << endl;
+	//cout << strlen(b1) << endl;
+	//char *b12 = b1 + strlen(b1)-1;
+	//char *b11 = b1 + 4;
+	//cout << b11 << endl;
+	//cout<< b12 << endl;
+	//char b3[100]= "abcdfegh";      //定义了100，但实际上还是8，因为处理字符串的函数根据空字符的位置，而不是数组长度来进行处理。
+	//cout <<"length: "<< strlen(b3) << endl;
+	//char b4[] = "ab\0cd";
+	//cout << "b4 length: " << strlen(b4) << endl;
+
 //
 //	cin.get(); cin.get();
 //}
@@ -251,3 +252,5 @@ using namespace std;
 //	cin.get(); cin.get();
 //	return 0;
 //}
+
+

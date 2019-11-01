@@ -256,3 +256,57 @@
 //	cin.get(); cin.get();
 //	return 0;
 //}
+
+// 面试13： 一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
+// 注意 可使用归纳法得到 f(n)=2*f(n-1);
+//class Solution {
+//public:
+//	int jumpFloorII(int number) {
+//
+//		if (number == 0)
+//			return 0;
+//		else if (number == 1)
+//			return 1;
+//		else if (number > 1)
+//			return 2 * jumpFloorII(number - 1);
+//	}
+//};
+
+//面试题14：减绳子，长度为n的绳子剪成2段，使 f(n)=max(f(i)*f(n-i));
+//使用动态规划，划分子问题，从下至上，注意刚开始的细节
+//using std::cout; using std::endl; using std::cin;
+//int maxmultiply(int length)
+//{
+//	if (length <= 1)
+//		return 0;                     //必须要切，因此
+//	else if (length == 2)
+//		return 1;                       //必须要切，因此
+//	else if (length == 3)
+//		return 2;                      //必须要切，因此
+//	int *record = new int[length+1];     //动态数组的申请
+//	record[0] = 0; record[1] = 1; record[2] = 2; record[3] = 3;   // 最短的原长度，不等于切的长度
+//	int max = 0;
+//	for (int i = 4; i <=length; i++)     //注意细节 <=
+//	{
+//		max = 0;
+//		for (int j = 1; j <= i / 2; j++)
+//		{
+//			int bch = record[j] * record[i - j];
+//			if (max < bch)
+//				max = bch;
+//			record[i] = max;
+//		}
+//	}
+//	int fin = record[length];
+//	delete [] record;
+//	return fin;
+//}
+//int main()
+//{
+//	int n = 6;
+//	int max = maxmultiply(n);
+//	cout << max << endl;
+//	cin.get(); cin.get();
+//}
+
+

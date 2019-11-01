@@ -2,7 +2,7 @@
 #include<iostream>
 #include<stdio.h>
 #include<vector>
-using namespace std;
+//using namespace std;
 
 //--------使用容器将整数转换二进制------------------------------------------------------------------------
   //  	int temp; int n = 8;
@@ -53,15 +53,30 @@ using namespace std;
 
 
 //---------------------------二维数组---------------------
+//using std::vector; using std::cout; using std::cin; using std::endl;
 //int main()
 //{
-//	vector<int>a = { 1,2,3,4 };
-//	vector<vector<int> >array1(3, vector<int>(4));
-//	int row = array1.size();
-//	int coul = array1[0].size();
-//	cout << "row: " << row << " coul: " << coul;
-//	array1[0] = a;
-//	cout << array1[0][2] << endl;
+//	// way 1:
+//	//vector<int>a = { 1,2,3,4 };
+//	//vector<vector<int> >array1(3, vector<int>(4));
+//	//int row = array1.size();
+//	//int coul = array1[0].size();
+//	//cout << "row: " << row << " coul: " << coul;
+//	//array1[0] = a;
+//	//cout << array1[0][2] << endl;
+//	//way 2
+//	int twodim[2][2] = { {1,2},{3,4} };
+//	const char *data[] = { "first","second" };    //  注意二维数组申请的区别
+//	char datS[][20] = { "fir","sec" };         //      区别
+//	for (int i = 0; i < 2; i++)
+//	{
+//		cout << data[i] <<" >"<<datS[i]<< ":\t";            //注意前面表示指向行第一个数据。
+//		for (int j = 0; j < 2; j++)
+//		{
+//			cout << twodim[i][j] << "\t";
+//		}
+//		cout << endl;
+//	}
 //	cin.get(); cin.get();
 //}
 
@@ -133,10 +148,12 @@ using namespace std;
 
 //int main()
 //{
+//
 //	vector<int>a = { 1,2,3,4,5 };
 //	vector<int>b = { 2,3,4,5,6,7,8 };
 //	vector<int>c;
 //	vector<int>::iterator iter = a.begin();
+//	cout << c.size() << endl;
 //	while (*iter != 4)
 //		iter++;
 //	int length = iter - a.begin();
@@ -148,8 +165,6 @@ using namespace std;
 //	cout << c.size() << endl;*/
 //	cin.get(); cin.get();
 //}
-
-
 
 
 
@@ -196,3 +211,7 @@ using namespace std;
 //		cout <<*b << endl;
 //	cin.get(); cin.get();
 //};
+
+
+
+
