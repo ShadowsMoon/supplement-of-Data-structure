@@ -143,52 +143,60 @@ using namespace std;
 //}
 
 //方法3 进一步提升
+//#include"data_structe.h";
+//double hmean(double a, double b);
+//double gmean(double a, double b);
+//inline void bad_hmean::hmf()  // 内联函数，返回类型，类名，类中函数名
+//{
+//	cout << v1 << "= " << v2 << "hmean: invaild argument: a=-b" << std::endl;
+//};
+//inline const char * bad_gmean::gmf()
+//{
+//	return "gmean() arguments should be >0 ";
+//};
+//int main()
+//{
+//	double a, b, z;
+//	while (cin >> a >> b)
+//	{
+//		try {
+//			z = hmean(a, b);
+//			cout << "hmean true: " << z << endl;
+//			cout << "gmean true: " << gmean(a,b) << endl;
+//		}
+//		catch(bad_hmean &hm)  //   ??
+//		{
+//			hm.hmf();
+//			cout << "try again\t"<<endl;
+//			continue;  //跳过循环剩余部分。
+//		}
+//		catch (bad_gmean &gm)  //
+//		{
+//			const char*lin = gm.gmf();      //注：字符串一般可以这种形式定义，因为字符串字符本质是地址
+//			cout << lin << endl;  // *lin指标是第一个字符
+//			cout << "enter a new pair" << endl;
+//			continue;  //跳过循环剩余部分。
+//		}
+//		cout << "enter q to quit" << endl;
+//	}
+//	cin.get(); cin.get();
+//	return 0;
+//}
+//double hmean(double a, double b)
+//{
+//	if (a == -b)
+//		throw bad_hmean(a,b); //    返回类对象，会在catch中匹配同样的类对象
+//	return a * b / (a + b);
+//};
+//double gmean(double a, double b)
+//{
+//	if (a<0||b<0)
+//		throw bad_gmean(a,b); //
+//	return sqrt(a*b);
+//};
 
-double hmean(double a, double b);
-double gmean(double a, double b);
-class hmeanf
-{
-private:
-	   double v1; 
-	   double v2;
-public:
-	hmeanf(double a,double b)
-
-};
-
-
-int main()
-{
-	double a, b, z;
-	while (cin >> a >> b)
-	{
-		try {
-			z = hmean(a, b);
-			cout << "hmean true: " << z << endl;
-			cout << "gmean true" << gmean << endl;
-		}
-		catch(const char *s)  //程序查找与异常类型匹配的catch块，该catch为char*，与引发异常类型匹配，将throw后的语句付给s，
-		{
-			cout << s << endl;
-			cout << "enter a new pair"<<endl;
-			continue;  //跳过循环剩余部分。
-		}
-		cout << "enter q to quit" << endl;
-	}
-	cin.get(); cin.get();
-	return 0;
-}
-double hmean(double a, double b)
-{
-	if (a == -b)
-		throw "a=-b not allowed"; //throw 语句跳转，当出错命令程序返回main，搜索hmean由try块调用的
-	return a * b / (a + b);
-}
-
-
-
-
-
+//exception类
+#include<exception>
 
 
 

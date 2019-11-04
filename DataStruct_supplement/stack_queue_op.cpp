@@ -103,5 +103,18 @@ using namespace std;
 //	cin.get(); cin.get();
 //}
 
-
+//int main() 
+//{
+//	stack<int> *odd = new stack<int>;
+//	stack<int> even;
+//	int *a = new int[10];
+//	a[0] = 10;
+//	even.push(2);
+//	odd->push(1);
+//	delete odd;
+//	delete[]a;
+//	cout << "test";
+//	cin.get(); cin.get();
+//	return 0;
+//}
 

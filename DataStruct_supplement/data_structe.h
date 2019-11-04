@@ -80,8 +80,29 @@ template<typename T>T Cqueue<T>::deleteHead()
 	T data = s2.top();
 	s2.pop();
 	return data;
-}
+};
 
+//异常类 from algorithm_collect
+class bad_hmean
+{
+private:
+	double v1;
+	double v2;
+public:
+	bad_hmean(double a = 0, double b = 0) :v1(a), v2(b) {};   //构造函数初始化方法：1，拥有初始值 : 输入变量
+	void hmf();
+};
+                                                                   //注意每定义或声明完函数或类，后必须加分号
+class bad_gmean
+{
+private:
+	double v1;
+	double v2;
+public:
+	bad_gmean(double a = 0, double b = 0) :v1(a), v2(b) {};
+	const char* gmf();
+};
+//--------------------------------------------------------------
 
 
 #endif

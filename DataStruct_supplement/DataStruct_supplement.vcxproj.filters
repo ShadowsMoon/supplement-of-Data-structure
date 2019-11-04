@@ -42,6 +42,9 @@
     <ClCompile Include="offfer_67_datastr.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="offer67_highcode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_structe.h">

@@ -6,35 +6,36 @@
 
 
 //列表生成方式：（举例）
-//struct listnode
-//{
-//	int val;
-//	listnode *next;
-//};
-//int main()
-//{
-//	listnode *head, *pre;  //头指向第一个
-//	head = nullptr; pre = nullptr;
-//	int a;
-//	for (int i = 0; i < 5; i++)   //长度为5的列表
-//	{
-//		listnode *mi = new listnode;
-//		cin >> a;
-//		(*mi).val = a;
-//		(*mi).next = nullptr;
-//		if (head == nullptr)
-//			head = mi;
-//		else
-//			pre->next = mi;
-//		pre = mi;
-//	}
-//	while (head)
-//	{
-//		cout << head->val << " ";
-//		head = head->next;
-//	}
-//	cin.get(); cin.get();
-//}
+using namespace std;
+struct listnode
+{
+	int val;
+	listnode *next;
+};
+int main()
+{
+	listnode *head, *pre;  //头指向第一个
+	head = nullptr; pre = nullptr;
+	int a;
+	for (int i = 0; i < 5; i++)   //长度为5的列表
+	{
+		listnode *mi = new listnode;
+		cin >> a;
+		(*mi).val = a;
+		(*mi).next = nullptr;
+		if (head == nullptr)
+			head = mi;
+		else
+			pre->next = mi;
+		pre = mi;
+	}
+	while (head)
+	{
+		cout << head->val << " ";
+		head = head->next;
+	}
+	cin.get(); cin.get();
+}
 
 //------------------------------链表---------------------------------------//
 //------------------链表生成方式 1(success)---------------------------------------------//

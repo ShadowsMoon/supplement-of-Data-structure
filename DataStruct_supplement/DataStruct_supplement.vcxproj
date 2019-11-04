@@ -121,6 +121,7 @@
     <ClCompile Include="algorithm_collect.cpp" />
     <ClCompile Include="list_operated.cpp" />
     <ClCompile Include="offer67_algorithm.cpp" />
+    <ClCompile Include="offer67_highcode.cpp" />
     <ClCompile Include="offfer_67_datastr.cpp" />
     <ClCompile Include="array_vector_operated.cpp" />
     <ClCompile Include="stack_queue_op.cpp" />
