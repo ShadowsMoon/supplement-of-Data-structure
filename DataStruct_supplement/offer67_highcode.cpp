@@ -124,15 +124,16 @@
 // 本题从1开始计数，即链表的尾结点是倒数第1个结点。例如一个链表有6个结点，
 // 从头结点开始它们的值依次是1、2、3、4、5、6。这个链表的倒数第3个结点是
 // 值为4的结点。
+//注意 思想：定义两个指针，可以实现只遍历一次即可
 //using std::cout; using std::cin; using std::endl;
 //struct ListNode
 //{
 //	int val;
 //	ListNode *mNext;
 //};
-//ListNode* listcreat(int *number)
+//ListNode* listcreat(int *number,int len)
 //{
-//	int len = sizeof(number) / sizeof(int);
+//	//int len = sizeof(number) / sizeof(int);         //注意。该对象的size只是1，不同于主函数中求大小，区别？
 //	ListNode *phead; ListNode *pre;
 //	phead = nullptr; pre = nullptr;
 //	for (int i = 0; i < len; i++)
@@ -142,29 +143,276 @@
 //		pnext->mNext = nullptr;
 //		if (phead == nullptr)
 //		{
-//			phead = pnext; pre = pnext;
+//			phead = pnext; 
 //		}
 //		else
 //		{
-//			ListNode *mid = pre;
+//			pre->mNext = pnext;
 //		}
+//		pre = pnext;
 //	}
+//	return phead;
 //}
-//int kthnode(int k,ListNode *phead)
+////考虑极端情况和边界条件
+//int kthnode(int len,ListNode *phead)
 //{
+//	if (phead == nullptr)   //1，空指针
+//		return 0;
+//	int k; cin >> k;
+//	if (k <= 0 || k >= len)  //2,k>总长和 3,k=0，虽然不符合，但还是符合语法，会被执行
+//		return 0;
 //	ListNode *p1 = phead;
-//	ListNode *p2 = phead + k - 1;   //保持k-1，因此当他到达尾节点时，p1到达倒数kth节点
+//	ListNode *p2 = p1;
+//	for (int i = 0; i < k-1; i++)
+//	{
+//		p2 = p2->mNext;   //保持k-1，因此当他到达尾节点时，p1到达倒数kth节点,（不是连续地址空间）
+//	}
 //	while (p2->mNext != nullptr)
 //	{
-//		p1++; p2++;
+//		p1=p1->mNext;
+//		p2=p2->mNext;
 //	}
 //	return p1->val;
 //}
-//
-//int main()
+//void test1()
 //{
 //	int number[] = { 1,2,3,4,5 };
 //	int len = sizeof(number) / sizeof(int);
-//	cout << len;
+//	ListNode *phead = listcreat(number, len);
+//	int knode = kthnode(len, phead);
+//	cout << "kth node is: " << knode;
+//}
+//int main()
+//{
+//	test1();
+//	cin.get(); cin.get();
+//}
+
+// 面试题24：反转链表
+// 题目：定义一个函数，输入一个链表的头结点，反转该链表并输出反转后链表的
+// 头结点。
+//struct ListNode {
+//	int val;
+//	struct ListNode *next;
+//	ListNode(int x) :
+//		val(x), next(NULL) {
+//	}
+//}; 
+//class Solution {
+//public:
+//	ListNode* ReverseList(ListNode* pHead)
+//	{
+//		if (pHead == nullptr || pHead->next == nullptr)
+//			return pHead;
+//		ListNode *pfir = nullptr;
+//		ListNode *psec = pHead;
+//		ListNode *pthr = pHead->next;
+//		while (pthr != nullptr)
+//		{
+//			psec->next = pfir;
+//			pfir = psec;
+//			psec = pthr;
+//			pthr = pthr->next;
+//		}
+//		psec->next = pfir;
+//		return psec;
+//	}
+//};
+
+
+
+//面试题25：输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。
+//using std::cout; using std::cin; using std::endl;
+//struct ListNode {
+//	int val;
+//	struct ListNode *next;
+//}; 
+//ListNode* listcreat(int *number,int len)
+//{
+//	//int len = sizeof(number) / sizeof(int);         //注意。该对象的size只是1，不同于主函数中求大小，区别？
+//	ListNode *phead; ListNode *pre;
+//	phead = nullptr; pre = nullptr;
+//	for (int i = 0; i < len; i++)
+//	{
+//		ListNode *pnext = new ListNode;
+//		pnext->val = number[i];
+//		pnext->next = nullptr;
+//		if (phead == nullptr)
+//		{
+//			phead = pnext; 
+//		}
+//		else
+//		{
+//			pre->next = pnext;
+//		}
+//		pre = pnext;
+//	}
+//	return phead;
+//}
+////
+//ListNode* Merge(ListNode* pHead1, ListNode* pHead2)
+//{
+//	ListNode *p1 = pHead1;
+//	ListNode *p2 = pHead2;
+//	ListNode *pcur = nullptr;
+//	ListNode *head = nullptr;
+//	if (p1 == nullptr || p2 == nullptr)
+//		return nullptr;
+//	else if (p1 == nullptr&&p2 != nullptr)
+//		return p2;
+//	else if (p2 == nullptr&&p1 != nullptr)
+//		return p1;
+//	if (p1->val <= p2->val)
+//	{
+//		head = p1; pcur = p1;
+//		p1 = p1->next;
+//	}
+//	else
+//	{
+//		head = p2; pcur = p2;
+//		p2 = p2->next;
+//	}
+//	while (p1 != nullptr&&p2 != nullptr)
+//	{
+//		if (p1->val <= p2->val)
+//		{
+//			pcur->next = p1;
+//			p1 = p1->next;
+//		}
+//		else
+//		{
+//			pcur->next = p2;
+//			p2 = p2->next;
+//		}
+//		pcur = pcur->next;
+//	}
+//	if (p1 == nullptr&&p2 != nullptr)
+//	{
+//		pcur->next = p2;
+//	}
+//	else if (p2 == nullptr&&p1 != nullptr)
+//	{
+//		pcur->next = p1;
+//	}
+//	return head;
+//
+//}
+//void test1()
+//{
+//	int p1[] = { 1,3,5 };
+//	int p2[] = { 2,4,6 };
+//	ListNode *phead1 = listcreat(p1, 3);
+//	ListNode *phead2 = listcreat(p2, 3);
+//	ListNode *merg = Merge(phead1, phead2);
+//	while (merg != nullptr)
+//	{
+//		cout << merg->val << endl;
+//		merg = merg->next;
+//	}
+//	
+//}
+//void test2()
+//{
+//	int p1[] = { 1,3,5 };
+//
+//	ListNode *phead1 = listcreat(p1, 3);
+//	ListNode *phead2 = nullptr;
+//	ListNode *merg = Merge(phead1, phead2);
+//	while (merg != nullptr)
+//	{
+//		cout << merg->val << endl;
+//		merg = merg->next;
+//	}
+//
+//}
+//int main()
+//{
+//	test2();
+//	cin.get(); cin.get();
+//}
+
+//面试题26：输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）
+//使用递归，分成两个部分  1，首先判断根节点是否相同，2，判断子树是否相同   注意递归终止条件为  空指针 
+
+//using std::cout; using std::cin; using std::endl;
+//struct TreeNode {
+//	int val;
+//	struct TreeNode *left;
+//	struct TreeNode *right;
+//};
+//bool doestree1hastree2(TreeNode* pRoot1, TreeNode* pRoot2);
+//TreeNode* CreateBinaryTreeNode(int dbValue)
+//{
+//	TreeNode* pNode = new TreeNode();
+//	pNode->val = dbValue;
+//	pNode->left = nullptr;
+//	pNode->right = nullptr;
+//
+//	return pNode;
+//}
+//
+//void ConnectTreeNodes(TreeNode* pParent, TreeNode* pLeft, TreeNode* pRight)
+//{
+//	if (pParent != nullptr)
+//	{
+//		pParent->left = pLeft;
+//		pParent->right = pRight;
+//	}
+//}
+//bool HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2)
+//{
+//	bool results = false;
+//	if (pRoot1 != nullptr&&pRoot2 != nullptr)
+//	{
+//		if (pRoot1->val == pRoot2->val)
+//			results = doestree1hastree2(pRoot1, pRoot2);
+//		if (!results)
+//			results = HasSubtree(pRoot1->left, pRoot2);
+//		if (!results)
+//			results = HasSubtree(pRoot1->right, pRoot2);
+//	}
+//	return results;
+//}
+//bool doestree1hastree2(TreeNode* pRoot1, TreeNode* pRoot2)
+//{
+//	if (pRoot2 == nullptr)
+//		return true;
+//	if (pRoot1 == nullptr)
+//		return false;
+//	if (pRoot1->val != pRoot2->val)
+//		return false;
+//	return  doestree1hastree2(pRoot1->left, pRoot2->left) && doestree1hastree2(pRoot1->right, pRoot2->right);
+//
+//}
+//
+//
+//void Test1()
+//{
+//	TreeNode* pNodeA1 = CreateBinaryTreeNode(8);
+//	TreeNode* pNodeA2 = CreateBinaryTreeNode(8);
+//	TreeNode* pNodeA3 = CreateBinaryTreeNode(7);
+//	TreeNode* pNodeA4 = CreateBinaryTreeNode(9);
+//	TreeNode* pNodeA5 = CreateBinaryTreeNode(3);
+//	TreeNode* pNodeA6 = CreateBinaryTreeNode(4);
+//	TreeNode* pNodeA7 = CreateBinaryTreeNode(7);
+//
+//	ConnectTreeNodes(pNodeA1, pNodeA2, pNodeA3);
+//	ConnectTreeNodes(pNodeA2, pNodeA4, pNodeA5);
+//	ConnectTreeNodes(pNodeA5, pNodeA6, pNodeA7);
+//
+//	TreeNode* pNodeB1 = CreateBinaryTreeNode(8);
+//	TreeNode* pNodeB2 = CreateBinaryTreeNode(9);
+//	TreeNode* pNodeB3 = CreateBinaryTreeNode(2);
+//
+//	ConnectTreeNodes(pNodeB1, pNodeB2, pNodeB3);
+//
+//	bool result=HasSubtree(pNodeA1, pNodeB1);
+//	cout << result << endl;
+//	//DestroyTree(pNodeA1);
+//	//DestroyTree(pNodeB1);
+//}
+//int main()
+//{
+//	Test1();
 //	cin.get(); cin.get();
 //}
