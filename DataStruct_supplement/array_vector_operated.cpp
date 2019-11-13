@@ -213,5 +213,34 @@
 //};
 
 
+//
+//#include<string>
+//using std::cout; using std::cin; using std::endl; using std::string;
+//int main()
+//{
+//
+//	int b[2][4] = { {1,2,3,4},{5,6,7,8} };
+//	const char*a = "jilhl";
+//	string aa = "wfwc";
+//	cout << b << endl;
+//	cout << a +1<< endl;
+//	cout << aa<< endl;
+//	cin.get(); cin.get();
+//}
 
 
+using namespace std;
+int main()
+{
+	vector<int>test1 = { 1,2,3};
+	vector<int>test2 = { 4,5};
+	vector<int>test3 = { 7 };
+	vector<vector<int>>matrix;
+	matrix.push_back(test1);
+	matrix.push_back(test2);
+	matrix.push_back(test3);
+	/*cout << "col: " << matrix.size() << endl;
+	vector<int>rows = matrix[1];
+	cout << "row: " << matrix[1].size() << endl;*/
+	cin.get(); cin.get();
+}
