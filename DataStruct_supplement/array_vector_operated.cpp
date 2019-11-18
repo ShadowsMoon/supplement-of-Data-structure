@@ -229,18 +229,49 @@
 //}
 
 
-using namespace std;
-int main()
-{
-	vector<int>test1 = { 1,2,3};
-	vector<int>test2 = { 4,5};
-	vector<int>test3 = { 7 };
-	vector<vector<int>>matrix;
-	matrix.push_back(test1);
-	matrix.push_back(test2);
-	matrix.push_back(test3);
-	/*cout << "col: " << matrix.size() << endl;
-	vector<int>rows = matrix[1];
-	cout << "row: " << matrix[1].size() << endl;*/
-	cin.get(); cin.get();
-}
+//using namespace std;
+//int main()
+//{
+//	vector<int>test1 = { 1,2,3};
+//	vector<int>test2 = { 4,5};
+//	vector<int>test3 = { 7 };
+//	vector<vector<int>>matrix;
+//	matrix.push_back(test1);
+//	matrix.push_back(test2);
+//	matrix.push_back(test3);
+//	/*cout << "col: " << matrix.size() << endl;
+//	vector<int>rows = matrix[1];
+//	cout << "row: " << matrix[1].size() << endl;*/
+//	cin.get(); cin.get();
+//}
+
+//如何对vector或者有初始化列表的结构体声明一段空间
+//using namespace std;
+//struct  Test
+//{
+//	int val;
+//	Test *next;
+//	Test(int x) :val(x), next(nullptr) {}
+//};
+//int main()
+//{
+//	int test = 1;
+//	int *t2 = new int;
+//	*t2 = test;
+//	delete t2;
+//	Test *test2 = new Test(3);
+//	vector<int>*a = new vector<int>{ 1,2,3 };
+//	cin.get(); cin.get();
+//}
+
+//using namespace std;
+//int main()
+//{
+//	vector<int> a ;
+//	int len = a.size();
+//	//vector<int>::iterator iter = a.end();
+//	//iter--;
+//	//cout << *iter << endl;
+//	cout << a[len] << endl;
+//	cin.get(); cin.get();
+//}

@@ -117,6 +117,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="binarytree_op.cpp" />
+    <ClCompile Include="difficult_grammer.cpp" />
     <ClCompile Include="function_sum.cpp" />
     <ClCompile Include="algorithm_collect.cpp" />
     <ClCompile Include="list_operated.cpp" />
