@@ -154,81 +154,157 @@
 
 
 //从上往下打印出二叉树的每个节点，同层节点从左至右打印。本质：层次遍历
-#include<queue>
-using namespace std;
-struct TreeNode {
-	int val;
-	struct TreeNode *left;
-	struct TreeNode *right;
-	TreeNode(int x) :
-		val(x), left(NULL), right(NULL) {
-	}
-}; 
-TreeNode *CreateBinaryTreeNode(int val)
-{
-	TreeNode* pnode = new TreeNode(val);
-	return pnode;
-}
-void ConnectTreeNodes(TreeNode *proot, TreeNode *pleft, TreeNode *pright)
-{
-	proot->left = pleft;
-	proot->right = pright;
-
-}
-//----------------------------------------------------------------------------//
-vector<int>PrintFromTopToBottom(TreeNode* root)
-{
-	vector<int>record;
-	if (root == nullptr)return record;
-	queue<TreeNode*>q;
-	q.push(root);
-	TreeNode *rt;
-	while (!q.empty())
-	{
-		rt = q.front();
-		record.push_back(rt->val);
-		if (rt->left != nullptr)
-			q.push(rt->left);
-		if (rt->right != nullptr)
-			q.push(rt->right);
-		q.pop();
-	}
-	return record;
-}
+//#include<queue>
+//using namespace std;
+//struct TreeNode {
+//	int val;
+//	struct TreeNode *left;
+//	struct TreeNode *right;
+//	TreeNode(int x) :
+//		val(x), left(NULL), right(NULL) {
+//	}
+//}; 
+//TreeNode *CreateBinaryTreeNode(int val)
+//{
+//	TreeNode* pnode = new TreeNode(val);
+//	return pnode;
+//}
+//void ConnectTreeNodes(TreeNode *proot, TreeNode *pleft, TreeNode *pright)
+//{
+//	proot->left = pleft;
+//	proot->right = pright;
+//
+//}
+////----------------------------------------------------------------------------//
+//vector<int>PrintFromTopToBottom(TreeNode* root)
+//{
+//	vector<int>record;
+//	if (root == nullptr)return record;
+//	queue<TreeNode*>q;      //队列，先进先出；同样的功能 deque
+//	q.push(root);
+//	TreeNode *rt;
+//	while (!q.empty())
+//	{
+//		rt = q.front();
+//		record.push_back(rt->val);
+//		if (rt->left != nullptr)
+//			q.push(rt->left);
+//		if (rt->right != nullptr)
+//			q.push(rt->right);
+//		q.pop();
+//	}
+//	return record;
+//}
 //void DestroyTree(TreeNode *proot)
 //{
 //
-//	delete[] proot;
+//	if (proot != nullptr)
+//	{
+//	   TreeNode* pLeft = proot->left;
+//	  TreeNode* pRight = proot->right;
+//
+//		delete proot;
+//		proot = nullptr;
+//
+//		DestroyTree(pLeft);
+//		DestroyTree(pRight);
+//	}
 //
 //}
-//---------------------------------------------------------------------//
-void Test1()
-{
-	TreeNode* pNodeA1 = CreateBinaryTreeNode(8);
-	TreeNode* pNodeA2 = CreateBinaryTreeNode(1);
-	TreeNode* pNodeA3 = CreateBinaryTreeNode(7);
-	TreeNode* pNodeA4 = CreateBinaryTreeNode(9);
-	TreeNode* pNodeA5 = CreateBinaryTreeNode(3);
-	TreeNode* pNodeA6 = CreateBinaryTreeNode(4);
-	TreeNode* pNodeA7 = CreateBinaryTreeNode(7);
+////---------------------------------------------------------------------//
+//void Test1()
+//{
+//	TreeNode* pNodeA1 = CreateBinaryTreeNode(8);
+//	TreeNode* pNodeA2 = CreateBinaryTreeNode(1);
+//	TreeNode* pNodeA3 = CreateBinaryTreeNode(7);
+//	TreeNode* pNodeA4 = CreateBinaryTreeNode(9);
+//	TreeNode* pNodeA5 = CreateBinaryTreeNode(3);
+//	TreeNode* pNodeA6 = CreateBinaryTreeNode(4);
+//	TreeNode* pNodeA7 = CreateBinaryTreeNode(7);
+//
+//	ConnectTreeNodes(pNodeA1, pNodeA2, pNodeA3);
+//	ConnectTreeNodes(pNodeA2, pNodeA4, pNodeA5);
+//	ConnectTreeNodes(pNodeA5, pNodeA6, pNodeA7);
+//
+//	vector<int>result = PrintFromTopToBottom(pNodeA1);
+//	vector<int>:: iterator val = result.begin();
+//	while (val<result.end())
+//	{
+//		cout << *val<< endl;
+//		++val;
+//	}
+//
+//	DestroyTree(pNodeA1);
+//	
+//}
+//int main()
+//{
+//	Test1();
+//	cin.get(); cin.get();
+//}
 
-	ConnectTreeNodes(pNodeA1, pNodeA2, pNodeA3);
-	ConnectTreeNodes(pNodeA2, pNodeA4, pNodeA5);
-	ConnectTreeNodes(pNodeA5, pNodeA6, pNodeA7);
-
-	vector<int>result = PrintFromTopToBottom(pNodeA1);
-	vector<int>:: iterator val = result.begin();
-	while (val<result.end())
-	{
-		cout << *val<< endl;
-		++val;
-	}
-
-	//DestroyTree(pNodeA1);
-	
-}
-int main()
-{
-	Test1();
-	cin.get(); cin.get();
-}
+//面试题31
+//输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则输出Yes,否则输出No。假设输入的数组的任意两个数字都互不相同。
+//using namespace std;
+//bool JudgeBackOrder(vector<int>::iterator fir, vector<int>::iterator sec);
+//bool VerifySquenceOfBST(vector<int> sequence)
+//{
+//	if (sequence.size()==0)
+//		return false;
+//	if (sequence.size() == 1)
+//		return true;
+//	vector<int>::iterator Firstseq = sequence.begin();
+//	vector<int>::iterator Finalseq = sequence.end();
+//	return  JudgeBackOrder(Firstseq, Finalseq);
+//}
+//bool JudgeBackOrder(vector<int>::iterator fir, vector<int>::iterator sec)
+//{
+//	int finalnode = *(sec - 1);
+//	int i = 0;
+//	for (; i + fir < sec - 1; i++)
+//	{
+//		if (*(i + fir) > finalnode)
+//			break;
+//	}
+//	int j = i;
+//	for (; j + fir < sec - 1; j++)
+//	{
+//		if (*(fir + j) < finalnode)
+//			return false;
+//	}
+//	bool left = true;
+//	if (i > 0)
+//		left = JudgeBackOrder(fir, i + fir);
+//	bool right = true;
+//	if (j + fir < sec - 1)
+//		right = JudgeBackOrder(fir + i, sec - 1);
+//	return left && right;
+//}
+//
+//void Test1()
+//{
+//	vector<int>test1 = { 5,7,6,9,11,10,8 };
+//	cout << VerifySquenceOfBST(test1);
+//}
+//
+//void Test2()
+//{
+//	vector<int>test2 = { 4, 8, 6, 12, 16, 14, 10 };
+//	cout << VerifySquenceOfBST(test2);
+//}
+//
+//void Test3()
+//{
+//	vector<int>test3 = { 7, 4, 6, 5 };
+//	cout << VerifySquenceOfBST(test3);
+//}
+//int main() 
+//{
+//	cout << "test1:";
+//	Test1();
+//	cout << " test2:";
+//	Test2();
+//	cout << " test3: ";
+//	Test3();
+//	cin.get(); cin.get();
+//}

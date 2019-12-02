@@ -267,11 +267,36 @@
 //using namespace std;
 //int main()
 //{
-//	vector<int> a ;
-//	int len = a.size();
-//	//vector<int>::iterator iter = a.end();
-//	//iter--;
-//	//cout << *iter << endl;
-//	cout << a[len] << endl;
+//
+//	vector<int> a;
+//	a.push_back(10);
+//	a.push_back(5);
+//	a.push_back(3);
+//
+//   a.resize(6);  //resize扩容后实在原数据 的基础上向后扩容
+//
+//
+//	printf("%d\n", a[0]);
+//	printf("%d\n", a[1]);
+//	cin.get(); cin.get();
+//	return 0;
+//}
+
+//
+//using namespace std;
+//void test(vector<int>::iterator f, vector<int>::iterator s)
+//{
+//	while (f < s)
+//	{
+//		cout << *f << endl;
+//		++f;
+//	}
+//}
+//int main()
+//{
+//	vector<int>a = { 1,2,3,4,5 };
+//	vector<int>::iterator iter = a.begin();
+//	//cout << *(iter + 2);
+//	test(iter + 2, iter+5);
 //	cin.get(); cin.get();
 //}

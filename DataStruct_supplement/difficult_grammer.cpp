@@ -235,3 +235,56 @@ using std::cout; using std::cin; using std::endl; using std::string;
 //}
 
 
+// 原文链接：https ://blog.csdn.net/shansusu/article/details/44780873
+// 文本文件格式与二进制格式的区别
+//#include<iostream>
+//using namespace std;
+//
+//void write(int *p, char *path) {
+//	FILE *fp;
+//	if ((fp = fopen(path, "wb")) == NULL) {
+//		cout << "文件打开失败！" << endl;
+//		exit(0);    //程序退出，系统级
+//	}
+//
+//	if (fwrite(p, sizeof(int), 1, fp) != 1) {
+//		cout << "写入失败！" << endl;
+//	}
+//	fclose(fp);
+//}
+//
+//int read(char *path) {
+//	int a;
+//	FILE *fp;
+//	if ((fp = fopen(path, "r")) == NULL) {
+//		cout << "文件打开失败！" << endl;
+//	}
+//
+//	fseek(fp, 0L, SEEK_END);
+//	int len = ftell(fp);
+//	rewind(fp);
+//
+//	if (fread(&a, 1, len, fp) != len) {
+//		cout << "读取失败" << endl;
+//	}
+//	fclose(fp);
+//
+//	return a;
+//}
+//
+//int main() {
+//	//char *name = "I'm a student.李雷";
+//	char path[] = "./test.txt";
+//	int b = 22;
+//	write(&b, path);
+//
+//	//char *content;
+//	int a;
+//	a = read(path);
+//
+//	cout << "content:" << a << endl;
+//	cin.get(); cin.get();
+//	return 0;
+//}
+
+
