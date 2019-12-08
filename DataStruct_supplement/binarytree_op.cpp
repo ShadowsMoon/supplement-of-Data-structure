@@ -131,3 +131,135 @@
 
 
 
+//#include <cstdio>
+//struct BinaryTreeNode {
+//	int m_nValue;
+//	struct BinaryTreeNode *m_pLeft;
+//	struct BinaryTreeNode *m_pRight;
+//	BinaryTreeNode(int x) :
+//		m_nValue(x), m_pLeft(NULL), m_pRight(NULL) {
+//	}
+//}; 
+//void ConvertNode(BinaryTreeNode* pNode, BinaryTreeNode** pLastNodeInList);
+//BinaryTreeNode* Convert(BinaryTreeNode* pRootOfTree)
+//{
+//	BinaryTreeNode *pLastNodeInList = nullptr;
+//	ConvertNode(pRootOfTree, &pLastNodeInList);
+//
+//	// pLastNodeInList指向双向链表的尾结点，
+//	// 我们需要返回头结点
+//	BinaryTreeNode *pHeadOfList = pLastNodeInList;
+//	while (pHeadOfList != nullptr && pHeadOfList->m_pLeft != nullptr)
+//		pHeadOfList = pHeadOfList->m_pLeft;
+//
+//	return pHeadOfList;
+//}
+//
+//void ConvertNode(BinaryTreeNode* pNode, BinaryTreeNode** pLastNodeInList)
+//{
+//	if (pNode == nullptr)
+//		return;
+//
+//	BinaryTreeNode *pCurrent = pNode;
+//
+//	if (pCurrent->m_pLeft != nullptr)
+//		ConvertNode(pCurrent->m_pLeft, pLastNodeInList);
+//
+//	pCurrent->m_pLeft = *pLastNodeInList;
+//	if (*pLastNodeInList != nullptr)
+//		(*pLastNodeInList)->m_pRight = pCurrent;
+//
+//	*pLastNodeInList = pCurrent;
+//
+//	if (pCurrent->m_pRight != nullptr)
+//		ConvertNode(pCurrent->m_pRight, pLastNodeInList);
+//}
+//
+//// ====================测试代码====================
+//void PrintDoubleLinkedList(BinaryTreeNode* pHeadOfList)
+//{
+//	BinaryTreeNode* pNode = pHeadOfList;
+//
+//	printf("The nodes from left to right are:\n");
+//	while (pNode != nullptr)
+//	{
+//		printf("%d\t", pNode->m_nValue);
+//
+//		if (pNode->m_pRight == nullptr)
+//			break;
+//		pNode = pNode->m_pRight;
+//	}
+//
+//	printf("\nThe nodes from right to left are:\n");
+//	while (pNode != nullptr)
+//	{
+//		printf("%d\t", pNode->m_nValue);
+//
+//		if (pNode->m_pLeft == nullptr)
+//			break;
+//		pNode = pNode->m_pLeft;
+//	}
+//
+//	printf("\n");
+//}
+//
+//void DestroyList(BinaryTreeNode* pHeadOfList)
+//{
+//	BinaryTreeNode* pNode = pHeadOfList;
+//	while (pNode != nullptr)
+//	{
+//		BinaryTreeNode* pNext = pNode->m_pRight;
+//
+//		delete pNode;
+//		pNode = pNext;
+//	}
+//}
+//
+//void Test(BinaryTreeNode* pRootOfTree)
+//{
+//	
+//	BinaryTreeNode* pHeadOfList = Convert(pRootOfTree);
+//
+//	PrintDoubleLinkedList(pHeadOfList);
+//}
+//void ConnectTreeNodes(BinaryTreeNode *proot, BinaryTreeNode *pleft, BinaryTreeNode *pright)
+//{
+//	proot->m_pLeft = pleft;
+//	proot->m_pRight= pright;
+//
+//}
+////            10
+////         /      \
+////        6        14
+////       /\        /\
+////      4  8     12  16
+//void Test1()
+//{
+//	BinaryTreeNode* pNode10 = new BinaryTreeNode(10);
+//	BinaryTreeNode* pNode6 = new BinaryTreeNode(6);
+//	BinaryTreeNode* pNode14 = new BinaryTreeNode(14);
+//	BinaryTreeNode* pNode4 = new BinaryTreeNode(4);
+//	BinaryTreeNode* pNode8 = new BinaryTreeNode(8);
+//	BinaryTreeNode* pNode12 = new BinaryTreeNode(12);
+//	BinaryTreeNode* pNode16 = new BinaryTreeNode(16);
+//
+//	ConnectTreeNodes(pNode10, pNode6, pNode14);
+//	ConnectTreeNodes(pNode6, pNode4, pNode8);
+//	ConnectTreeNodes(pNode14, pNode12, pNode16);
+//
+//	Test(pNode10);
+//
+//	DestroyList(pNode4);
+//}
+//
+//
+//using std::cin;
+//int main(int argc, char* argv[])
+//{
+//	Test1();
+//
+//	cin.get(); cin.get();
+//	return 0;
+//}
+
+

@@ -308,3 +308,397 @@
 //	Test3();
 //	cin.get(); cin.get();
 //}
+
+//面试题32：输入一颗二叉树的跟节点和一个整数，打印出二叉树中结点值的和为输入整数的所有路径。
+//路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。(注意: 在返回值的list中，数组长度大的数组靠前)
+//using namespace std;
+//struct TreeNode {
+//	int val;
+//	struct TreeNode *left;
+//	struct TreeNode *right;
+//	TreeNode(int x) :
+//			val(x), left(NULL), right(NULL) {
+//	}
+//};
+//void goalong(vector<vector<TreeNode* >>&AllPath, TreeNode* root, vector<TreeNode* >path, int expectNumber, int currentsum);
+//vector<vector<TreeNode* > > FindPath(TreeNode* root, int expectNumber)
+//{
+//	int currentsum = 0;
+//	vector<TreeNode* >path;
+//	vector<vector<TreeNode* >>AllPath;
+//	goalong(AllPath, root, path, expectNumber, currentsum);
+//	return AllPath;
+//}
+//void goalong(vector<vector<TreeNode* >>&AllPath,TreeNode* root, vector<TreeNode* >path,int expectNumber,int currentsum)
+//{
+//	currentsum += root->val;
+//	path.push_back(root);
+//	if ((root->left == nullptr&&root->right == nullptr)&& (expectNumber==currentsum))
+//	{
+//		AllPath.push_back(path);
+//	}
+//	if (root->left != nullptr)
+//			goalong(AllPath,root->left, path, expectNumber, currentsum);
+//	if(root->right!=nullptr)
+//			goalong(AllPath,root->right, path, expectNumber, currentsum);
+//	if(path.size()>0)
+//	    path.pop_back();
+//}
+//
+//void ConnectTreeNodes(TreeNode *proot, TreeNode *pleft, TreeNode *pright)
+//{
+//	proot->left = pleft;
+//	proot->right = pright;
+//
+//}
+//void Test1()
+//{
+//	TreeNode* pNode10 = new TreeNode(10);
+//	TreeNode* pNode5 =  new TreeNode(5);
+//	TreeNode* pNode12 = new TreeNode(12);
+//	TreeNode* pNode4 = new TreeNode(4);
+//	TreeNode* pNode7 = new TreeNode(7);
+//
+//	ConnectTreeNodes(pNode10, pNode5, pNode12);
+//	ConnectTreeNodes(pNode5, pNode4, pNode7);
+//	printf("Two paths should be found in Test1.\n");
+//	int expectnum = 22;
+//	vector<vector<TreeNode* > >result=FindPath(pNode10,expectnum);
+//	int i = 0;
+//	while (i<result.size())
+//	{
+//		int j = 0;
+//		vector<TreeNode* >rr = result[i];
+//		i++;
+//		while (j <rr.size())
+//		{
+//			cout << rr[j]->val<<" " ;
+//			j++;
+//		}
+//		cout << " next: " << endl;
+//	}
+//	
+//}
+//int main()
+//{
+//	Test1();
+//	cin.get(); cin.get();
+//}
+
+// 另外解法
+//class Solution {
+//public:
+//	vector<vector<int> > buffer;      //关键点：buffer ,tmp 都是共享数据，函数无法这样
+//	vector<int> tmp;
+//	vector<vector<int> > FindPath(TreeNode* root, int expectNumber) {
+//		if (root == NULL)  //递归终止条件
+//			return buffer;
+//		tmp.push_back(root->val);
+//		if ((expectNumber - root->val) == 0 && root->left == NULL && root->right == NULL)//  判断条件
+//		{
+//			buffer.push_back(tmp);
+//		}
+//		FindPath(root->left, expectNumber - root->val);    //
+//		FindPath(root->right, expectNumber - root->val);  //
+//		if (tmp.size() != 0)
+//			tmp.pop_back();
+//		return buffer;
+//	}
+//};
+
+// 面试题35：复杂链表的复制
+// 题目：请实现函数ComplexListNode* Clone(ComplexListNode* pHead)，复
+// 制一个复杂链表。在复杂链表中，每个结点除了有一个m_pNext指针指向下一个
+// 结点外，还有一个m_pSibling 指向链表中的任意结点或者nullptr。
+//该题难点：复制后的链表 里面的地址和原链表是不一致的（如果一致复制将毫无意义）
+//struct ComplexListNode
+//{
+//	int                 m_nValue;
+//	ComplexListNode*    m_pNext;
+//	ComplexListNode*    m_pSibling;
+//	ComplexListNode(int x) :
+//			m_nValue(x), m_pNext(NULL), m_pSibling(NULL) {
+//	}
+//};
+//// 首先节点交替变成两倍长
+//void CloneNodes(ComplexListNode* pHead)
+//{
+//	ComplexListNode* pnode = pHead;
+//	while (pnode != nullptr)
+//	{
+//		ComplexListNode* CloneNode=new ComplexListNode(0);
+//		CloneNode->m_nValue = pnode->m_nValue;
+//		CloneNode->m_pNext = pnode->m_pNext;
+//		CloneNode->m_pSibling = nullptr;
+//		pnode->m_pNext = CloneNode;
+//		pnode = CloneNode->m_pNext;
+//	}
+//}
+////将节点中新复制的节点的随机节点复制
+//void CloneRand(ComplexListNode* pHead)
+//{
+//	ComplexListNode* pnode = pHead;
+//	ComplexListNode* CloneNode = pHead->m_pNext;
+//	while (CloneNode->m_pNext != nullptr)   //该判断条件针对最后一个节点没有随机节点的情况
+//	{
+//		if (pnode->m_pSibling != nullptr) //中间某个节点的随机节点为空，就不会存在下个节点
+//		{
+//			CloneNode->m_pSibling = (pnode->m_pSibling)->m_pNext;
+//		}
+//		else
+//		{
+//			CloneNode->m_pSibling = nullptr;
+//		}
+//
+//		pnode = CloneNode->m_pNext;
+//		CloneNode = pnode->m_pNext;
+//	}
+//
+//}
+////将一条链拆成两段
+//ComplexListNode* Clone(ComplexListNode* pHead)
+//{
+//	ComplexListNode*node = pHead;
+//	ComplexListNode* clonehead = node->m_pNext;
+//	ComplexListNode*clonenode = node->m_pNext;
+//	while (clonenode->m_pNext != nullptr)                                 //该判断条件针对最后一个节点没有随机节点的情况
+//	{
+//		node->m_pNext = clonenode->m_pNext;
+//		node = node->m_pNext;
+//		clonenode->m_pNext = node->m_pNext;
+//		clonenode = clonenode->m_pNext;
+//	}
+//	return clonehead;
+//
+//}
+////
+//void BuildNodes(ComplexListNode *proot, ComplexListNode *pnext, ComplexListNode *prand)
+//{
+//	proot->m_pNext = pnext;
+//	proot->m_pSibling = prand;
+//}
+//void PrintList(ComplexListNode* pHead)
+//{
+//	ComplexListNode* pNode = pHead;
+//	while (pNode != nullptr)
+//	{
+//		printf("The value of this node is: %d.\n", pNode->m_nValue);
+//
+//		if (pNode->m_pSibling != nullptr)
+//			printf("The value of its sibling is: %d.\n", pNode->m_pSibling->m_nValue);
+//		else
+//			printf("This node does not have a sibling.\n");
+//
+//		printf("\n");
+//
+//		pNode = pNode->m_pNext;
+//	}
+//}
+//void Test1()
+//{
+//	ComplexListNode* pNode1 = new ComplexListNode(1);
+//	ComplexListNode* pNode2 = new ComplexListNode(2);
+//	ComplexListNode* pNode3 = new ComplexListNode(3);
+//	ComplexListNode* pNode4 = new ComplexListNode(4);
+//	ComplexListNode* pNode5 = new ComplexListNode(5);
+//
+//	BuildNodes(pNode1, pNode2, pNode3);
+//	BuildNodes(pNode2, pNode3, pNode5);
+//	BuildNodes(pNode3, pNode4, nullptr);
+//	BuildNodes(pNode4, pNode5, pNode2);
+//
+//	CloneNodes(pNode1);
+//	CloneRand(pNode1);
+//	ComplexListNode* result=Clone(pNode1);
+//	PrintList(result);
+//}
+//using std::cin;
+//int main()
+//{
+//	Test1();
+//	cin.get(); cin.get();
+//}
+
+//面试题36：输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。要求不能创建任何新的结点，只能调整树中结点指针的指向。
+#include <cstdio>
+using namespace std;
+struct BinaryTreeNode {
+	int m_nValue;
+	struct BinaryTreeNode *m_pLeft;
+	struct BinaryTreeNode *m_pRight;
+	BinaryTreeNode(int x) :
+		m_nValue(x), m_pLeft(NULL), m_pRight(NULL) {
+	}
+}; 
+BinaryTreeNode* Convert(BinaryTreeNode* pRootOfTree)
+{
+	if (pRootOfTree == nullptr)
+		return nullptr;
+	BinaryTreeNode *p = pRootOfTree;
+	BinaryTreeNode *pre = nullptr;
+	BinaryTreeNode *root = nullptr;
+	stack<BinaryTreeNode*>record;
+	bool isfirst = true;
+	while (!record.empty() || p != nullptr)
+	{
+		while (p != nullptr)
+		{
+			record.push(p);
+			p = p->m_pLeft;
+		}
+		p = record.top();
+		record.pop();
+		if (isfirst)
+		{
+			root = p;
+			pre = p;
+			isfirst = false;
+		}
+		else
+		{
+			pre->m_pRight = p;
+			p->m_pLeft = pre;
+			pre = p;
+		}
+		p = p->m_pRight;
+	}
+	return root;
+};
+// ====================测试代码====================
+void PrintDoubleLinkedList(BinaryTreeNode* pHeadOfList)
+{
+	BinaryTreeNode* pNode = pHeadOfList;
+
+	printf("The nodes from left to right are:\n");
+	while (pNode != nullptr)
+	{
+		printf("%d\t", pNode->m_nValue);
+
+		if (pNode->m_pRight == nullptr)
+			break;
+		pNode = pNode->m_pRight;
+	}
+
+	printf("\nThe nodes from right to left are:\n");
+	while (pNode != nullptr)
+	{
+		printf("%d\t", pNode->m_nValue);
+
+		if (pNode->m_pLeft == nullptr)
+			break;
+		pNode = pNode->m_pLeft;
+	}
+
+	printf("\n");
+}
+
+void DestroyList(BinaryTreeNode* pHeadOfList)
+{
+	BinaryTreeNode* pNode = pHeadOfList;
+	while (pNode != nullptr)
+	{
+		BinaryTreeNode* pNext = pNode->m_pRight;
+
+		delete pNode;
+		pNode = pNext;
+	}
+}
+
+void Test(BinaryTreeNode* pRootOfTree)
+{
+	
+	BinaryTreeNode* pHeadOfList = Convert(pRootOfTree);
+
+	PrintDoubleLinkedList(pHeadOfList);
+}
+void ConnectTreeNodes(BinaryTreeNode *proot, BinaryTreeNode *pleft, BinaryTreeNode *pright)
+{
+	proot->m_pLeft = pleft;
+	proot->m_pRight= pright;
+
+}
+//            10
+//         /      \
+//        6        14
+//       /\        /\
+//      4  8     12  16
+void Test1()
+{
+	BinaryTreeNode* pNode10 = new BinaryTreeNode(10);
+	BinaryTreeNode* pNode6 = new BinaryTreeNode(6);
+	BinaryTreeNode* pNode14 = new BinaryTreeNode(14);
+	BinaryTreeNode* pNode4 = new BinaryTreeNode(4);
+	BinaryTreeNode* pNode8 = new BinaryTreeNode(8);
+	BinaryTreeNode* pNode12 = new BinaryTreeNode(12);
+	BinaryTreeNode* pNode16 = new BinaryTreeNode(16);
+
+	ConnectTreeNodes(pNode10, pNode6, pNode14);
+	ConnectTreeNodes(pNode6, pNode4, pNode8);
+	ConnectTreeNodes(pNode14, pNode12, pNode16);
+
+	Test(pNode10);
+
+	DestroyList(pNode4);
+}
+
+
+using std::cin;
+int main(int argc, char* argv[])
+{
+	Test1();
+
+	cin.get(); cin.get();
+	return 0;
+}
+
+
+
+
+//using namespace std;
+//struct TreeNode {
+//	int val;
+//	struct TreeNode *left;
+//	struct TreeNode *right;
+//	TreeNode(int x) :
+//			val(x), left(NULL), right(NULL) {
+//	}
+//};
+//class Solution {
+//public:
+//	TreeNode* Convert(TreeNode* pRootOfTree)
+//	{
+//		if (pRootOfTree == nullptr)
+//			return;
+//		TreeNode *p = pRootOfTree;
+//		TreeNode *pre = nullptr;
+//		TreeNode *root = nullptr;
+//		stack<TreeNode*>record;
+//		bool isfirst = true;
+//		while (!record.empty() || p == nullptr)
+//		{
+//			while (p != nullptr)
+//			{
+//				record.push(p);
+//				p = p->left;
+//			}
+//			p = record.top();
+//			record.pop();
+//			if (isfirst)
+//			{
+//				root = p;
+//				pre = p;
+//				isfirst = false;
+//			}
+//			else 
+//			{
+//				pre->right = p;
+//				p->left = pre;
+//				pre = p;
+//			}
+//			p = p->right;
+//		}
+//		return root;
+//	}
+//
+//
+//};

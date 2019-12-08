@@ -239,7 +239,7 @@
 //	matrix.push_back(test1);
 //	matrix.push_back(test2);
 //	matrix.push_back(test3);
-//	/*cout << "col: " << matrix.size() << endl;
+//	/*cout << "col: " << matrix.size() << endl;   
 //	vector<int>rows = matrix[1];
 //	cout << "row: " << matrix[1].size() << endl;*/
 //	cin.get(); cin.get();
