@@ -520,185 +520,276 @@
 //}
 
 //面试题36：输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。要求不能创建任何新的结点，只能调整树中结点指针的指向。
-#include <cstdio>
-using namespace std;
-struct BinaryTreeNode {
-	int m_nValue;
-	struct BinaryTreeNode *m_pLeft;
-	struct BinaryTreeNode *m_pRight;
-	BinaryTreeNode(int x) :
-		m_nValue(x), m_pLeft(NULL), m_pRight(NULL) {
-	}
-}; 
-BinaryTreeNode* Convert(BinaryTreeNode* pRootOfTree)
-{
-	if (pRootOfTree == nullptr)
-		return nullptr;
-	BinaryTreeNode *p = pRootOfTree;
-	BinaryTreeNode *pre = nullptr;
-	BinaryTreeNode *root = nullptr;
-	stack<BinaryTreeNode*>record;
-	bool isfirst = true;
-	while (!record.empty() || p != nullptr)
-	{
-		while (p != nullptr)
-		{
-			record.push(p);
-			p = p->m_pLeft;
-		}
-		p = record.top();
-		record.pop();
-		if (isfirst)
-		{
-			root = p;
-			pre = p;
-			isfirst = false;
-		}
-		else
-		{
-			pre->m_pRight = p;
-			p->m_pLeft = pre;
-			pre = p;
-		}
-		p = p->m_pRight;
-	}
-	return root;
-};
-// ====================测试代码====================
-void PrintDoubleLinkedList(BinaryTreeNode* pHeadOfList)
-{
-	BinaryTreeNode* pNode = pHeadOfList;
-
-	printf("The nodes from left to right are:\n");
-	while (pNode != nullptr)
-	{
-		printf("%d\t", pNode->m_nValue);
-
-		if (pNode->m_pRight == nullptr)
-			break;
-		pNode = pNode->m_pRight;
-	}
-
-	printf("\nThe nodes from right to left are:\n");
-	while (pNode != nullptr)
-	{
-		printf("%d\t", pNode->m_nValue);
-
-		if (pNode->m_pLeft == nullptr)
-			break;
-		pNode = pNode->m_pLeft;
-	}
-
-	printf("\n");
-}
-
-void DestroyList(BinaryTreeNode* pHeadOfList)
-{
-	BinaryTreeNode* pNode = pHeadOfList;
-	while (pNode != nullptr)
-	{
-		BinaryTreeNode* pNext = pNode->m_pRight;
-
-		delete pNode;
-		pNode = pNext;
-	}
-}
-
-void Test(BinaryTreeNode* pRootOfTree)
-{
-	
-	BinaryTreeNode* pHeadOfList = Convert(pRootOfTree);
-
-	PrintDoubleLinkedList(pHeadOfList);
-}
-void ConnectTreeNodes(BinaryTreeNode *proot, BinaryTreeNode *pleft, BinaryTreeNode *pright)
-{
-	proot->m_pLeft = pleft;
-	proot->m_pRight= pright;
-
-}
-//            10
-//         /      \
-//        6        14
-//       /\        /\
-//      4  8     12  16
-void Test1()
-{
-	BinaryTreeNode* pNode10 = new BinaryTreeNode(10);
-	BinaryTreeNode* pNode6 = new BinaryTreeNode(6);
-	BinaryTreeNode* pNode14 = new BinaryTreeNode(14);
-	BinaryTreeNode* pNode4 = new BinaryTreeNode(4);
-	BinaryTreeNode* pNode8 = new BinaryTreeNode(8);
-	BinaryTreeNode* pNode12 = new BinaryTreeNode(12);
-	BinaryTreeNode* pNode16 = new BinaryTreeNode(16);
-
-	ConnectTreeNodes(pNode10, pNode6, pNode14);
-	ConnectTreeNodes(pNode6, pNode4, pNode8);
-	ConnectTreeNodes(pNode14, pNode12, pNode16);
-
-	Test(pNode10);
-
-	DestroyList(pNode4);
-}
-
-
-using std::cin;
-int main(int argc, char* argv[])
-{
-	Test1();
-
-	cin.get(); cin.get();
-	return 0;
-}
-
-
-
-
+//#include <cstdio>
 //using namespace std;
-//struct TreeNode {
-//	int val;
-//	struct TreeNode *left;
-//	struct TreeNode *right;
-//	TreeNode(int x) :
-//			val(x), left(NULL), right(NULL) {
+//struct BinaryTreeNode {
+//	int m_nValue;
+//	struct BinaryTreeNode *m_pLeft;
+//	struct BinaryTreeNode *m_pRight;
+//	BinaryTreeNode(int x) :
+//		m_nValue(x), m_pLeft(NULL), m_pRight(NULL) {
 //	}
-//};
+//}; 
+//void ConvertNode(BinaryTreeNode* pNode, BinaryTreeNode** pLastNodeInList);
+//BinaryTreeNode* Convert(BinaryTreeNode* pRootOfTree)    //递归求解方式，等同于迭代版，核心都是中序遍历
+//{
+//	BinaryTreeNode *pLastNodeInList = nullptr;
+//	ConvertNode(pRootOfTree, &pLastNodeInList);
+//
+//	// pLastNodeInList指向双向链表的尾结点，
+//	// 我们需要返回头结点
+//	BinaryTreeNode *pHeadOfList = pLastNodeInList;
+//	while (pHeadOfList != nullptr && pHeadOfList->m_pLeft != nullptr)
+//		pHeadOfList = pHeadOfList->m_pLeft;
+//
+//	return pHeadOfList;
+//}
+//
+//void ConvertNode(BinaryTreeNode* pNode, BinaryTreeNode** pLastNodeInList)
+//{
+//	if (pNode == nullptr)
+//		return;
+//
+//	BinaryTreeNode *pCurrent = pNode;
+//
+//	if (pCurrent->m_pLeft != nullptr)
+//		ConvertNode(pCurrent->m_pLeft, pLastNodeInList);
+//
+//	pCurrent->m_pLeft = *pLastNodeInList;
+//	if (*pLastNodeInList != nullptr)
+//		(*pLastNodeInList)->m_pRight = pCurrent;
+//
+//	*pLastNodeInList = pCurrent;
+//
+//	if (pCurrent->m_pRight != nullptr)
+//		ConvertNode(pCurrent->m_pRight, pLastNodeInList);
+//}
+///*//BinaryTreeNode* Convert(BinaryTreeNode* pRootOfTree) //迭代求解方式
+////{
+////	if (pRootOfTree == nullptr)
+////		return nullptr;
+////	BinaryTreeNode *p = pRootOfTree;
+////	BinaryTreeNode *pre = nullptr;
+////	BinaryTreeNode *root = nullptr;
+////	stack<BinaryTreeNode*>record;
+////	bool isfirst = true;
+////	while (!record.empty() || p != nullptr)
+////	{
+////		while (p != nullptr)
+////		{
+////			record.push(p);
+////			p = p->m_pLeft;
+////		}
+////		p = record.top();
+////		record.pop();
+////		if (isfirst)
+////		{
+////			root = p;
+////			pre = p;
+////			isfirst = false;
+////		}
+////		else
+////		{
+////			pre->m_pRight = p;
+////			p->m_pLeft = pre;
+////			pre = p;
+////		}
+////		p = p->m_pRight;
+////	}
+////	return root;
+////};*/
+////// ====================测试代码====================
+//void PrintDoubleLinkedList(BinaryTreeNode* pHeadOfList)
+//{
+//	BinaryTreeNode* pNode = pHeadOfList;
+//
+//	printf("The nodes from left to right are:\n");
+//	while (pNode != nullptr)
+//	{
+//		printf("%d\t", pNode->m_nValue);
+//
+//		if (pNode->m_pRight == nullptr)
+//			break;
+//		pNode = pNode->m_pRight;
+//	}
+//
+//	printf("\nThe nodes from right to left are:\n");
+//	while (pNode != nullptr)
+//	{
+//		printf("%d\t", pNode->m_nValue);
+//
+//		if (pNode->m_pLeft == nullptr)
+//			break;
+//		pNode = pNode->m_pLeft;
+//	}
+//
+//	printf("\n");
+//}
+//
+//void DestroyList(BinaryTreeNode* pHeadOfList)
+//{
+//	BinaryTreeNode* pNode = pHeadOfList;
+//	while (pNode != nullptr)
+//	{
+//		BinaryTreeNode* pNext = pNode->m_pRight;
+//
+//		delete pNode;
+//		pNode = pNext;
+//	}
+//}
+//
+//void Test(BinaryTreeNode* pRootOfTree)
+//{
+//	
+//	BinaryTreeNode* pHeadOfList = Convert(pRootOfTree);
+//
+//	PrintDoubleLinkedList(pHeadOfList);
+//}
+//void ConnectTreeNodes(BinaryTreeNode *proot, BinaryTreeNode *pleft, BinaryTreeNode *pright)
+//{
+//	proot->m_pLeft = pleft;
+//	proot->m_pRight= pright;
+//
+//}
+////            10
+////         /      \
+////        6        14
+////       /\        /\
+////      4  8     12  16
+//void Test1()
+//{
+//	BinaryTreeNode* pNode10 = new BinaryTreeNode(10);
+//	BinaryTreeNode* pNode6 = new BinaryTreeNode(6);
+//	BinaryTreeNode* pNode14 = new BinaryTreeNode(14);
+//	BinaryTreeNode* pNode4 = new BinaryTreeNode(4);
+//	BinaryTreeNode* pNode8 = new BinaryTreeNode(8);
+//	BinaryTreeNode* pNode12 = new BinaryTreeNode(12);
+//	BinaryTreeNode* pNode16 = new BinaryTreeNode(16);
+//
+//	ConnectTreeNodes(pNode10, pNode6, pNode14);
+//	ConnectTreeNodes(pNode6, pNode4, pNode8);
+//	ConnectTreeNodes(pNode14, pNode12, pNode16);
+//
+//	Test(pNode10);
+//
+//	DestroyList(pNode4);
+//}
+//
+//
+//using std::cin;
+//int main(int argc, char* argv[])
+//{
+//	Test1();
+//
+//	cin.get(); cin.get();
+//	return 0;
+//}
+
+
+
+//输入一个字符串,打印出该字符串中字符的所有排列。例如输入字符串abc,则打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。
+
+//#include <cstdio>
+//
+//void Permutation(char* pStr, char* pBegin);
+//
+//void Permutation(char* pStr)
+//{
+//	if (pStr == nullptr)
+//		return;
+//
+//	Permutation(pStr, pStr);
+//}
+//
+//void Permutation(char* pStr, char* pBegin)
+//{
+//	if (*pBegin == '\0')
+//	{
+//		printf("%s\n", pStr);
+//	}
+//	else
+//	{
+//		for (char* pCh = pBegin; *pCh != '\0'; ++pCh)
+//		{
+//			char temp = *pCh;
+//			*pCh = *pBegin;
+//			*pBegin = temp;
+//
+//			Permutation(pStr, pBegin + 1);
+//
+//			temp = *pCh;
+//			*pCh = *pBegin;
+//			*pBegin = temp;
+//		}
+//	}
+//}
+//
+////  string版本的方法   （无法按照字典序来打印）
 //class Solution {
 //public:
-//	TreeNode* Convert(TreeNode* pRootOfTree)
-//	{
-//		if (pRootOfTree == nullptr)
-//			return;
-//		TreeNode *p = pRootOfTree;
-//		TreeNode *pre = nullptr;
-//		TreeNode *root = nullptr;
-//		stack<TreeNode*>record;
-//		bool isfirst = true;
-//		while (!record.empty() || p == nullptr)
+//	vector<string> Permutation(string str) {
+//		if (str.size() <= 0)
+//			return record;
+//		int len = 0;
+//		Per(str, len);
+//		for (set<string>::iterator iter = record_temp.begin(); iter != record_temp.end(); iter++)
 //		{
-//			while (p != nullptr)
-//			{
-//				record.push(p);
-//				p = p->left;
-//			}
-//			p = record.top();
-//			record.pop();
-//			if (isfirst)
-//			{
-//				root = p;
-//				pre = p;
-//				isfirst = false;
-//			}
-//			else 
-//			{
-//				pre->right = p;
-//				p->left = pre;
-//				pre = p;
-//			}
-//			p = p->right;
+//			record.push_back(*iter);
 //		}
-//		return root;
+//		return record;
 //	}
+//	void Per(string &str, int len)
+//	{
+//		if (len >= str.size())
+//			record_temp.insert(str);
+//		else
+//		{
+//			for (int i = len; i < str.size(); i++)
+//			{
+//				char temp = str[i];
+//				str[i] = str[len];
+//				str[len] = temp;
+//				Per(str, len + 1);
+//				temp = str[i];
+//				str[i] = str[len];
+//				str[len] = temp;
 //
-//
+//			}
+//		}
+//	}
+//	vector<string> record;
+//	set<string> record_temp;    //基于红黑树的关联容器，不会保存相同数据。
 //};
+//
+////
+////// ====================测试代码====================
+//void Test(char* pStr)
+//{
+//	if (pStr == nullptr)
+//		printf("Test for nullptr begins:\n");
+//	else
+//		printf("Test for %s begins:\n", pStr);
+//
+//	Permutation(pStr);
+//
+//	printf("\n");
+//}
+//using namespace std;
+//int main(int argc, char* argv[])
+//{
+//	/*Test(nullptr);
+//
+//	char string1[] = "";
+//	Test(string1);
+//
+//	char string2[] = "a";
+//	Test(string2);
+//
+//	char string3[] = "ab";
+//	Test(string3);*/
+//
+//	char string4[] = "abb";
+//	Test(string4);
+//	cin.get(); cin.get();
+//	return 0;
+//}

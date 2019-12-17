@@ -123,6 +123,7 @@
     <ClCompile Include="grammer_supp.cpp" />
     <ClCompile Include="list_operated.cpp" />
     <ClCompile Include="offer67_algorithm.cpp" />
+    <ClCompile Include="offer67_efficiency.cpp" />
     <ClCompile Include="offer67_highcode.cpp" />
     <ClCompile Include="offer67_mind.cpp" />
     <ClCompile Include="offfer_67_datastr.cpp" />

@@ -1,7 +1,7 @@
 #include<iostream>
 #include<stdio.h>
-#include<string.h>
 #include<cstring>
+#include<string>
 #include<stdlib.h>  
 #include<ctime>
 #include<list>
@@ -267,3 +267,48 @@
 //	 Test1();
 //	 cin.get(); cin.get();
 // }
+
+
+//针对面试题38的字典序算法
+//using namespace std;
+//void order()
+//{
+//	int arry[4] = { 1,2,3,4 };//len==3;
+//	int len = 4;
+//	int j, k;
+//
+//	while (true)
+//	{
+//		cout << "test:" << endl;
+//		for (int num = 0; num < 4; num++)
+//		{
+//			cout << arry[num];
+//		}
+//		for (j = len - 2; j >= 0 && arry[j] > arry[j + 1]; j--);//注意此处 j >= 0 判断条件在前
+//		
+//		if (j < 0) { return ; }//结束
+//
+//		for (k = len - 1; k > j&&arry[k] < arry[j]; k--);
+//
+//		swap(arry[k], arry[j]);
+//
+//		for (int l = j + 1, r = len - 1; l < r; l++, r--)
+//			swap(arry[l], arry[r]);
+//	}
+//
+//}
+//
+//#include <algorithm>
+//#include<set>
+//int main()
+//{
+//	//order();
+//	string a[] = { "abc", "bac","acb","bac","cab","cba" };
+//	set<string>a;
+//	sort(a, a + 6);
+//	for (int i = 0; i < 6; i++)
+//	{
+//		cout << a[i] << " ";
+//	}
+//	cin.get(); cin.get();
+//}

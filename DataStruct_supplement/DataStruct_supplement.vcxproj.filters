@@ -54,6 +54,9 @@
     <ClCompile Include="grammer_supp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="offer67_efficiency.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_structe.h">

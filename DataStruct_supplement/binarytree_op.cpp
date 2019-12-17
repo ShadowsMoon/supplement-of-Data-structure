@@ -263,3 +263,51 @@
 //}
 
 
+//
+//using namespace std;
+//struct TreeNode {
+//	int val;
+//	struct TreeNode *left;
+//	struct TreeNode *right;
+//	TreeNode(int x) :
+//		val(x), left(NULL), right(NULL) {
+//	}
+//}; 
+//class Solution {
+//public:
+//	TreeNode* Convert(TreeNode* pRootOfTree)
+//	{
+//		if (pRootOfTree == nullptr)
+//			return nullptr;
+//		TreeNode *p = pRootOfTree;
+//		TreeNode *pre = nullptr;
+//		TreeNode *root = nullptr;
+//		stack<TreeNode*>record;
+//		bool isfirst = true;
+//		while (!record.empty() || p != nullptr)
+//		{
+//			while (p != nullptr)
+//			{
+//				record.push(p);
+//				p = p->left;
+//			}
+//			p = record.top();
+//			record.pop();
+//			if (isfirst)
+//			{
+//				root = p;
+//				pre = p;
+//				isfirst = false;
+//			}
+//			else
+//			{
+//				pre->right = p;
+//				p->left = pre;
+//				pre = p;
+//			}
+//			p = p->right;
+//		}
+//		return root;
+//	}
+//};
+
