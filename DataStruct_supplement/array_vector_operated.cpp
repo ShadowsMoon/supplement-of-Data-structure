@@ -2,7 +2,27 @@
 #include<iostream>
 #include<stdio.h>
 #include<vector>
-//using namespace std;
+using namespace std;
+
+//https://blog.csdn.net/latte_z/article/details/17049479
+//#include<algorithm>    //sort 排序算法，默认从小到大，可以进行修改
+//bool cmp(int a, int b)
+//{
+//	if (a > b)
+//		return true;
+//	return false;
+//}
+//int main()
+//{
+//	vector<int>t1 = { 5,2,1,7,4,8,3 };
+//	sort(t1.begin(), t1.end(), cmp);
+//	for (int i = 0; i < t1.size(); i++)
+//		cout << t1[i] << endl;
+//	cin.get(); cin.get();
+//	return 0;
+//}
+//
+
 
 //--------使用容器将整数转换二进制------------------------------------------------------------------------
   //  	int temp; int n = 8;

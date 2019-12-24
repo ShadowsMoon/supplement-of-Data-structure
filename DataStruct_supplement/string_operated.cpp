@@ -1,10 +1,32 @@
 
 #include<iostream>
 #include<stdio.h>
-#include<string.h>
 #include<cstring>
-using namespace std;
-// char  compare string//
+#include<vector>
+#include<string>
+//using namespace std;
+////  https://blog.csdn.net/u010455041/article/details/50097251
+//int main()
+//{
+//	int a = 2341, b = 234;
+//	string A = "";
+//	string B = "";
+//	A += to_string(a);  //int类转为string类
+//	A += to_string(b);
+//	B += to_string(b);
+//	B += to_string(a);
+//	bool ju = A > B;             // string类可以直接比较大小，估计是按ascall 编码大小逐位比较
+//	if (!ju)
+//		cout << A << endl;
+//
+//	string t1 = "ab", t2 = "ac";
+//	ju = t1 < t2;
+//	if (ju)
+//		cout << t1<< endl;
+//	cin.get(); cin.get();
+//}
+
+
 
 //int main()
 //{
