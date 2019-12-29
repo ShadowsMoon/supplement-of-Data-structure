@@ -10,7 +10,7 @@
 #include<stack>
 #include<queue>
 #include"data_structe.h"
-//using namespace std;
+using namespace std;
 //int main()
 //{
 //	//cout << "rand(1): " << rand() % 10 << endl;     // rand产生随机整数，使用a+rand%b可得到 [a，a+b]范围的整数   头文件 stdio.h
@@ -311,4 +311,14 @@
 //		cout << a[i] << " ";
 //	}
 //	cin.get(); cin.get();
+//}
+
+//using namespace std;
+//int main()
+//{
+//	int *a = new int[2];
+//	a[1] = a[0] = 1;
+//	int t = a[1];
+//	delete[]a;
+//	return 0;
 //}

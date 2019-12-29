@@ -170,33 +170,189 @@ using std::to_string;
 // 面试题45：输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。
 //例如输入数组{3，32，321}，则打印出这三个数字能排成的最小数字为321323。
 
-class Solution {
-public:
-// 注意 是否需要static,原因？sort中的比较函数cmp要声明为静态成员函数或全局函数，不能作为普通成员函数，否则会报错。
-//因为：非静态成员函数是依赖于具体对象的，而std::sort这类函数是全局的，因此无法再sort中调用非静态成员函数。
-//静态成员函数或者全局函数是不依赖于具体对象的, 可以独立访问，无须创建任何对象实例就可以访问。
-//同时静态成员函数不可以调用类的非静态成员。
-	static bool cmp(int a, int b){       
-		string A, B;
-		A.append(to_string(a) + to_string(b));
-		B.append(to_string(b) + to_string(a));  //核心思想：比较a+b 和b+a的大小，把最小的放在前面
-		return A < B;
-	}
-	string PrintMinNumber(vector<int> numbers) {
-		string answers;
-		sort(numbers.begin(), numbers.end(), cmp);
-		for (int i = 0; i < numbers.size(); i++)
-			answers += to_string(numbers[i]);
-		return answers;
-	}
-};
+//class Solution {
+//public:
+//// 注意 是否需要static,原因？sort中的比较函数cmp要声明为静态成员函数或全局函数，不能作为普通成员函数，否则会报错。
+////因为：非静态成员函数是依赖于具体对象的，而std::sort这类函数是全局的，因此无法再sort中调用非静态成员函数。
+////静态成员函数或者全局函数是不依赖于具体对象的, 可以独立访问，无须创建任何对象实例就可以访问。
+////同时静态成员函数不可以调用类的非静态成员。
+//	static bool cmp(int a, int b){       
+//		string A, B;
+//		A.append(to_string(a) + to_string(b));
+//		B.append(to_string(b) + to_string(a));  //核心思想：比较a+b 和b+a的大小，把最小的放在前面
+//		return A < B;
+//	}
+//	string PrintMinNumber(vector<int> numbers) {
+//		string answers;
+//		sort(numbers.begin(), numbers.end(), cmp); //注意 	功能等价于sort(numbers.begin(), numbers.end(), great<int>);  cmp更灵活
+//		for (int i = 0; i < numbers.size(); i++)
+//			answers += to_string(numbers[i]);
+//		return answers;
+//	}
+//};
+//
+//int main()
+//{
+//	vector<int >t1= {3, 32, 321};
+//	Solution test1;
+//    string result=test1.PrintMinNumber(t1);
+//	cout << result << endl;
+//	cin.get(); cin.get();
+//	return 0;
+//}
 
-int main()
+
+
+//：把只包含质因子2、3和5的数称作丑数（Ugly Number）。例如6、8都是丑数，但14不是，因为它包含质因子7。 
+//习惯上我们把1当做是第一个丑数。求按从小到大的顺序的第N个丑数。
+
+// 方法1：最佳时间：以空间换时间
+//class Solution1 {
+//public:
+//	int GetUglyNumber_Solution(int index) {
+//		if (index <= 0)
+//			return 0;
+//		int *Ru = new int[index];
+//		int nextR = 1;
+//		Ru[0] = 1;
+//		int *u2 = Ru;   //
+//		int *u3 = Ru;
+//		int *u5 = Ru;
+//		while (nextR < index)
+//		{
+//			int min = min235(*u2 * 2, *u3 * 3, *u5 * 5);
+//			Ru[nextR] = min;
+//			while (*u2 * 2 <= min)     //
+//				++u2;
+//			while (*u3 * 3 <= min)
+//				++u3;
+//			while (*u5 * 5 <= min)
+//				++u5;
+//			++nextR;
+//		}
+//		int fin = Ru[index - 1];
+//		delete[]Ru;
+//		return fin;
+//	}
+//	int min235(int nu2, int nu3, int nu5)
+//	{
+//		int mid = ((nu2 <= nu3) ? nu2 : nu3);
+//		return (mid <= nu5) ? mid : nu5;
+//	}
+//};
+//
+////方法2：穷举法
+//class solution2 {
+//public:
+//	bool IsUgly(int index)
+//	{
+//		while (index % 2 == 0)
+//			index = index >> 1;
+//		while (index % 3 == 0)
+//			index = index / 3;
+//		while (index % 5 == 0)
+//			index = index / 5;
+//		return (index == 1) ? true : false;
+//	}
+//	int GetUglyNumber_Solution(int index) {
+//		if (index <= 0)
+//			return index;
+//		int count = 0, number = 0;
+//		while (count < index)
+//		{
+//			++number;
+//			if (IsUgly(number))
+//				++count;
+//		}
+//		return number;
+//	}
+//};
+//void test1()
+//{
+//	double secs;                           
+//	clock_t start = clock();
+//
+//	Solution1 t1;
+//	int v1 = t1.GetUglyNumber_Solution(1000);
+//	cout << "t1: " << v1 << endl;
+//
+//	clock_t delay = clock() - start;               //计时 使用
+//	secs = (double)delay / CLOCKS_PER_SEC;
+//	cout << "delay=: " << secs << endl;
+//}
+//void test2()
+//{
+//	double secs;
+//	clock_t start = clock();
+//
+//	solution2 t2;
+//	int v2 = t2.GetUglyNumber_Solution(1000);
+//	cout << "t2: " << v2 << endl;
+//
+//	clock_t delay = clock() - start;               //计时 使用
+//	secs = (double)delay / CLOCKS_PER_SEC;
+//	cout << "delay=: " << secs << endl;
+//}
+//int main()
+//{
+//	test1();
+//	test2();
+//	cin.get(); cin.get();
+//	return 0;
+//}
+
+
+// 在一个字符串(0<=字符串长度<=10000，全部由字母组成)中找到第一个只出现一次的字符,
+//并返回它的位置, 如果没有则返回 -1（需要区分大小写）
+
+char FirstNotRepeatingChar(const char* pString)
 {
-	vector<int >t1= {3, 32, 321};
-	Solution test1;
-    string result=test1.PrintMinNumber(t1);
-	cout << result << endl;
-	cin.get(); cin.get();
+	if (pString == nullptr)
+		return '\0';
+
+	const int tableSize = 256;
+	unsigned int hashTable[tableSize];
+	for (unsigned int i = 0; i < tableSize; ++i)
+		hashTable[i] = 0;
+
+	const char* pHashKey = pString;
+	while (*(pHashKey) != '\0')
+		hashTable[*(pHashKey++)] ++;
+
+	pHashKey = pString;
+	while (*pHashKey != '\0')
+	{
+		if (hashTable[*pHashKey] == 1)
+			return *pHashKey;
+
+		pHashKey++;
+	}
+
+	return '\0';
+}
+
+// ====================测试代码====================
+void Test(const char* pString, char expected)
+{
+	if (FirstNotRepeatingChar(pString) == expected)
+		printf("Test passed.\n");
+	else
+		printf("Test failed.\n");
+}
+
+int main(int argc, char* argv[])
+{
+	// 常规输入测试，存在只出现一次的字符
+	Test("google", 'l');
+
+	// 常规输入测试，不存在只出现一次的字符
+	Test("aabccdbd", '\0');
+
+	// 常规输入测试，所有字符都只出现一次
+	Test("abcdefg", 'a');
+
+	// 鲁棒性测试，输入nullptr
+	Test(nullptr, '\0');
+
 	return 0;
 }

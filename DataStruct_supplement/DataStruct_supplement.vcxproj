@@ -121,6 +121,7 @@
     <ClCompile Include="function_sum.cpp" />
     <ClCompile Include="algorithm_collect.cpp" />
     <ClCompile Include="grammer_supp.cpp" />
+    <ClCompile Include="heap_operated.cpp" />
     <ClCompile Include="list_operated.cpp" />
     <ClCompile Include="offer67_algorithm.cpp" />
     <ClCompile Include="offer67_efficiency.cpp" />
