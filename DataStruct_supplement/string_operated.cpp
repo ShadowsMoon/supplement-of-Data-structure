@@ -4,8 +4,12 @@
 #include<cstring>
 #include<vector>
 #include<string>
-//using namespace std;
+using namespace std;
 ////  https://blog.csdn.net/u010455041/article/details/50097251
+
+
+
+
 //int main()
 //{
 //	int a = 2341, b = 234;

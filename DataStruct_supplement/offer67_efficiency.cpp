@@ -304,55 +304,47 @@ using std::to_string;
 
 // 在一个字符串(0<=字符串长度<=10000，全部由字母组成)中找到第一个只出现一次的字符,
 //并返回它的位置, 如果没有则返回 -1（需要区分大小写）
-
-char FirstNotRepeatingChar(const char* pString)
-{
-	if (pString == nullptr)
-		return '\0';
-
-	const int tableSize = 256;
-	unsigned int hashTable[tableSize];
-	for (unsigned int i = 0; i < tableSize; ++i)
-		hashTable[i] = 0;
-
-	const char* pHashKey = pString;
-	while (*(pHashKey) != '\0')
-		hashTable[*(pHashKey++)] ++;
-
-	pHashKey = pString;
-	while (*pHashKey != '\0')
-	{
-		if (hashTable[*pHashKey] == 1)
-			return *pHashKey;
-
-		pHashKey++;
-	}
-
-	return '\0';
-}
-
-// ====================测试代码====================
-void Test(const char* pString, char expected)
-{
-	if (FirstNotRepeatingChar(pString) == expected)
-		printf("Test passed.\n");
-	else
-		printf("Test failed.\n");
-}
-
-int main(int argc, char* argv[])
-{
-	// 常规输入测试，存在只出现一次的字符
-	Test("google", 'l');
-
-	// 常规输入测试，不存在只出现一次的字符
-	Test("aabccdbd", '\0');
-
-	// 常规输入测试，所有字符都只出现一次
-	Test("abcdefg", 'a');
-
-	// 鲁棒性测试，输入nullptr
-	Test(nullptr, '\0');
-
-	return 0;
-}
+//#include<cstring>
+//class Solution {
+//public:
+//	int FirstNotRepeatingChar(string str) {
+//		if (str.size() <= 0)
+//			return -1;
+//        const int table=256;
+//		int hashtable[table];
+//		memset(hashtable, 0, sizeof(hashtable));     // sizeof(a) 求出包含多少个字节，int为4*size
+//		string index (str);     //
+//		string::iterator iter = index.begin();
+//		while (iter<index.end())
+//		{
+//			hashtable[*(iter)]+=1;       // hash映射，由字符映射为ASCALL值放入hashtable
+//			iter++;
+//		}
+//		iter = index.begin();
+//		int count = 0;
+//		while (iter < index.end())
+//		{
+//			if (hashtable[*(iter)] == 1)
+//			{
+//				return count;
+//				//注：(iter-str.begin() 不是int型，iter是不相容的，因此无法用这样的方式来确定位置
+//			}
+//			iter++;
+//			count++;
+//		}
+//		return-1;
+//	}
+//};
+//void test1()
+//{
+//	string str = "aabbcde";
+//	Solution  t1;
+// 	int pos=t1.FirstNotRepeatingChar(str);
+//	cout << "position: " << pos;
+//}
+//int main()
+//{
+//	test1();
+//	cin.get(); cin.get();
+//	return 0;
+//}
