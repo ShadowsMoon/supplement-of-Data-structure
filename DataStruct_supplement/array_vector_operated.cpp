@@ -4,8 +4,10 @@
 #include<vector>
 using namespace std;
 
+
+
 //https://blog.csdn.net/latte_z/article/details/17049479
-//#include<algorithm>    //sort 排序算法，默认从小到大，可以进行修改
+#include<algorithm>    //sort 排序算法，默认从小到大，可以进行修改
 //bool cmp(int a, int b)
 //{
 //	if (a > b)
@@ -25,32 +27,36 @@ using namespace std;
 
 
 //--------使用容器将整数转换二进制------------------------------------------------------------------------
-  //  	int temp; int n = 8;
-		//temp = n;
-		//vector<int>L;
-		//while (temp != 0)
-		//{
-		//	L.push_back(temp % 2);
-		//	temp = temp>>1;
-		//}
-		//////-------------------------将vector内容全部打印---------------------------------------
-		////// way1:
-		//int na= L.size() - 1;
-		//for (int m = 0; m < na; m++)
-		//{
-		//	cout << L[m] << endl;
-		//}
-		////way2:
-		/*for (vector<int>::iterator iter = L.begin(); iter != L.end(); iter++)
-			cout<<*iter;
-		cout<<endl;*/
-		////way3:
-
-		//const int *f = &L.front();  const int *s = &L.back();
-		//for (; f <= s; f++)
-		//{
-		//	cout << *f << endl;
-		//}
+//int main()
+//{
+//	  	int temp; int n = 8;
+//		  temp = n;
+//		  vector<int>L;
+//		  while (temp != 0)
+//		  {
+//		  	L.push_back(temp % 2);
+//		  	temp = temp>>1;
+//		  }
+//		  ////-------------------------将vector内容全部打印---------------------------------------
+//		  //// way1:
+//		  int na= L.size() - 1;
+//		  for (int m = 0; m <=na; m++)
+//		  {
+//		  	cout << L[m] << endl;
+//		  }
+//		  ////way2:
+//		  /*for (vector<int>::iterator iter = L.begin(); iter != L.end(); iter++)
+//			  cout<<*iter;
+//		  cout<<endl;*/
+//		  ////way3:
+//
+//		  //const int *f = &L.front();  const int *s = &L.back();
+//		  //for (; f <= s; f++)
+//		  //{
+//		  //	cout << *f << endl;
+//		  //}
+//		  cin.get(); cin.get();
+//}
 //------------------------------------------------------------------------------------------------
 
 //------------动态空间------------------------------
@@ -81,7 +87,7 @@ using namespace std;
 //	//vector<vector<int> >array1(3, vector<int>(4));
 //	//int row = array1.size();
 //	//int coul = array1[0].size();
-//	//cout << "row: " << row << " coul: " << coul;
+//	//cout << "row: " << row << " coul: " << coul<<endl;
 //	//array1[0] = a;
 //	//cout << array1[0][2] << endl;
 //	//way 2
@@ -97,6 +103,7 @@ using namespace std;
 //		}
 //		cout << endl;
 //	}
+//	cout << twodim[1]<< "\t";   //注意与字符串形式的结果的不同，
 //	cin.get(); cin.get();
 //}
 
@@ -316,7 +323,7 @@ using namespace std;
 //{
 //	vector<int>a = { 1,2,3,4,5 };
 //	vector<int>::iterator iter = a.begin();
-//	//cout << *(iter + 2);
-//	test(iter + 2, iter+5);
+//	cout << *(iter + 2) << endl;
+//	test(iter + 2, iter+4);
 //	cin.get(); cin.get();
 //}

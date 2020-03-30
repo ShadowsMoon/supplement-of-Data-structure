@@ -3,7 +3,7 @@
 #define DATA01_SUM
 #include <stack>
 #include <exception>
-
+// 头文件不应包含using声明
 //-----------------------------------
 __int64 power_1(int n);
 __int64 power_2(int n);

@@ -1,12 +1,14 @@
-
 #include<stack>
 #include<vector>
 #include<iostream>
 #include <exception>
+#include<queue>
 #include"data_structe.h"
 
 using namespace std;
-////----------------Õ»¾ÙÀý----------------------------------------------------//
+
+
+//////----------------Õ»¾ÙÀý----------------------------------------------------//
 //stack<char>& cvt(stack<char>&s, int n, int base)
 //{
 //	char digit[] = { '0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F' };
@@ -48,6 +50,7 @@ using namespace std;
 //{
 //	stack<char>ju;
 //	for (int i = lo; i < hi; i++)
+//	{
 //		if (exp[i] == '(')
 //			ju.push(exp[i]);
 //		else if (exp[i] == ')')
@@ -56,10 +59,11 @@ using namespace std;
 //				ju.pop();
 //			else
 //				return false;
-//			   //break;
+//			//break;
 //		}
 //		else
 //			cout << ju.size() << endl;
+//	}
 //	return  ju.empty();
 //}
 //

@@ -11,6 +11,9 @@
 #include<queue>
 #include"data_structe.h"
 using namespace std;
+
+
+
 //int main()
 //{
 //	//cout << "rand(1): " << rand() % 10 << endl;     // rand产生随机整数，使用a+rand%b可得到 [a，a+b]范围的整数   头文件 stdio.h
@@ -322,3 +325,156 @@ using namespace std;
 //	delete[]a;
 //	return 0;
 //}
+
+
+//void a(char **p,int num)
+//{
+//	*p = (char*)malloc(num);
+//}
+//
+//void main(void)
+//{
+//	char *str = NULL;
+//	 a(&str,100);
+//	 strcpy(str, "hello");
+//	cout << str;
+//	cin.get(); cin.get();
+//}
+
+
+//void a(char **p,int num)
+//{
+//	*p = (char*)malloc(num);
+//}
+//
+//void main(void)
+//{
+//	char *str = (char*)malloc(100);
+//	 strcpy(str, "hello");
+//	 free(str);
+//	 if (str != NULL)
+//	 {
+//		 strcpy(str, "world");
+//		 cout << str;
+//	 }
+//	cin.get(); cin.get();
+//}
+
+
+
+
+// String
+
+//class String
+//{
+//public:
+//	String(const char *str = NULL); // 普通构造函数
+//	String(const String &other); // 拷贝构造函数
+//	~String(void);     //
+//	String & operator =(const String &other); // 赋值函数
+//private:
+//	char *m_data;
+//};
+//
+//
+//String::String(const char *str)
+//{
+//	if (str == NULL)
+//	{
+//		m_data = new char[1];
+//		m_data = '\0';
+//	}
+//	else
+//	{
+//		int dataL = strlen(str);
+//	  	m_data = new char[dataL + 1];
+//		if (m_data != nullptr)
+//			strcpy_s(m_data, (dataL + 1), str);
+//		else
+//			return;
+//	}
+//}
+//
+//
+//
+//String::~String(void)
+//{
+//	delete[] m_data;
+//}
+//
+//String::String(const String &other)
+//{
+//	int length = strlen(other.m_data);
+//	m_data = new char[length + 1];
+//	if (m_data != nullptr)
+//		strcpy_s(m_data, (length + 1), other.m_data);
+//	else
+//		return;
+//
+//}
+//
+//String & String::operator=(const String &other)
+//{
+//	if (this == &other)
+//		return *this;
+//
+//	delete[] m_data;
+//	int length = strlen(other.m_data);
+//	m_data = new char[length + 1];
+//	if (m_data != nullptr)
+//	{
+//		strcpy_s(m_data, (length + 1), other.m_data);
+//		return *this;
+//	}
+//}
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//#define Max_num 1000
+//
+//void myreverse(char *str, int n);
+//int LoopMove(char * pcStr, int iSteps)
+//{
+//	char str[Max_num];
+//	int n = strlen(pcStr);
+//	if (iSteps <= 0)
+//		return -1;
+//	iSteps %= n;
+//	myreverse(pcStr, n - iSteps);     //左移：myreverse(str,m);  
+//	myreverse(pcStr + n - iSteps, iSteps);   //左移：myreverse(str+m,n-m);  
+//	myreverse(pcStr, n);
+//	return 0;
+//}
+//
+//void myreverse(char *str, int n)
+//{
+//	int p1 = 0, p2 = n - 1;
+//	char tmp;
+//	while (p1 < p2)
+//	{
+//		tmp = str[p1];
+//		str[p1] = str[p2];
+//		str[p2] = tmp;
+//		p1++;
+//		p2--;
+//	}
+//}
+//
+//int main()
+//{
+//	char str[] = "abcd";
+//	 LoopMove(str,  2);
+//	 cout << str;
+//	 cin.get(); cin.get();
+//	return 0;
+//}
+
+
+
+

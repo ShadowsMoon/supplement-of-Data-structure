@@ -6,7 +6,7 @@
 
 
 //列表生成方式：（举例）
-//using namespace std;
+using namespace std;
 //struct listnode
 //{
 //	int val;
@@ -44,7 +44,7 @@
 //	int  val;
 //	ListNode *next;
 //};
-//void Addtolist(ListNode** phead, int value)
+//void Addtolist(ListNode** phead, int value)    //关键点：phead表示指针的指针，其地址再调用时不改变；*phead表示链表的第一个节点，**phead指向它
 //{
 //	ListNode* pnew = new ListNode;
 //	pnew->val = value;
