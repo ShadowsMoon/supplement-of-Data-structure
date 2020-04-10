@@ -63,6 +63,9 @@
     <ClCompile Include="BST_AVL.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="all_sort.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_structe.h">

@@ -116,6 +116,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="all_sort.cpp" />
     <ClCompile Include="binarytree_op.cpp" />
     <ClCompile Include="BST_AVL.cpp" />
     <ClCompile Include="difficult_grammer.cpp" />

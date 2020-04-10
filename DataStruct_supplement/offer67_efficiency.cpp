@@ -13,6 +13,8 @@ using std::vector; using std::cout; using std::cin; using std::endl; using std::
 using std::multiset;        // multiset 和set 区别在于前者允许重复
 using std::to_string;
 
+
+
 //面试题40：输入n个整数，找出其中最小的K个数。例如输入4,5,1,6,2,7,3,8这8个数字，则最小的4个数字是1,2,3,4,。
 //typedef multiset<int, std::greater<int> >            intSet;
 //typedef multiset<int, std::greater<int> >::iterator  setIterator;
@@ -353,4 +355,198 @@ using std::to_string;
 
 //面试题51：在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。
 //输入一个数组, 求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P % 1000000007
+//class Solution {
+//public:
+//	int InversePairs(vector<int> data) {
+//		if (data.size() < 2)
+//			return 0;
+//		vector<int>::iterator proot = data.begin();
+//		vector<int>* copy = new vector<int>(data);
+//		int count=IP_main(proot,copy->begin(),0,data.size()-1);
+//		return count;
+//	}
+//	int IP_main(vector<int>::iterator data, vector<int>::iterator copy,int lo,int hi )
+//	{
+//		if (lo == hi)
+//		{
+//			return 0;
+//		}
+//		int length = (hi - lo) / 2;
+//		int left = IP_main(copy, data, lo, lo + length);
+//		int right = IP_main(copy, data, lo + length + 1, hi);
+//
+//		int i = lo + length;
+//		int j = hi;
+//		int indexcopy = hi;
+//		int count=0;
+//
+//		while (i >= lo && j >= lo + length + 1)
+//		{
+//			if  (data[i] > data[j])
+//			{
+//				count += j - lo - length;
+//				copy[indexcopy--] = data[i--];
+//			}
+//			else 
+//				copy[indexcopy--] = data[j--];
+//		}
+//		for(;i>=lo;i--)
+//			copy[indexcopy--] = data[i];
+//		for(;j>=lo+length+1;j--)
+//			copy[indexcopy--] = data[j];
+//		return left+right+count;
+//	}
+//
+//};
+//void test1()
+//{
+//	vector<int>data = { 6,5,4,3,2,1 };
+//	Solution t1;
+//	int count=t1.InversePairs(data);
+//	if (count == 15)
+//		cout << "successed" << endl;
+//}
+//void test2()
+//{
+//	vector<int>data = { 1, 2, 3, 4, 7, 6, 5 };
+//	Solution t1;
+//	int count = t1.InversePairs(data);
+//	if (count == 3)
+//		cout << "successed" << endl;
+//}
+//int main()
+//{
+//	test1();
+//	test2();
+//	cin.get(); cin.get();
+//}
 
+
+
+//面试题52 （简单）
+//输入两个链表，找出它们的第一个公共结点。（注意因为传入数据是链表，所以错误测试数据的提示是用其他方式显示的，保证传入数据是正确的）
+//公共节点不仅仅指该节点值相同，并且地址也相同
+
+
+
+//面试题53
+//统计一个数字在排序数组中出现的次数。
+//class solution {
+//public:
+//	int num_main(vector<int>data, int k)
+//	{
+//		int num = 0;
+//		int len = data.size();
+//		if (len > 0)
+//		{
+//			int fir = getfirst(data.begin(), len,k, 0, len - 1);
+//			int las=getlast(data.begin(), len, k, 0, len - 1);
+//			if (fir > -1 && las > -1)
+//				num = las - fir + 1;
+//		}
+//		return num;
+//	}
+//	int getfirst(vector<int>::iterator proot,int length, int &k, int start, int end)
+//	{
+//		if (start > end)   //当要找的值不在该向量中时
+//			return -1;  
+//		int mid = (end + start) / 2;
+////		int mid_value = proot[mid];
+//		if (proot[mid] == k)
+//		{
+//			if (mid - 1 > 0 && proot[mid - 1] != k || mid == 0)
+//				return mid;
+//			else
+//				end = mid - 1;
+//		}
+//		else if (proot[mid] > k)
+//			end =mid- 1;
+//		else
+//			start =mid+ 1;
+//		return getfirst(proot, length,k, start, end);
+//	}
+//
+//	int getlast(vector<int>::iterator proot, int length,int &k, int start, int end)
+//	{
+//		if (start > end)   //当要找的值不在该向量中时
+//			return -1;
+//		int mid = (end + start) / 2;
+//		//		int mid_value = proot[mid];
+//		if (proot[mid] == k)
+//		{
+//			if (mid - 1 > 0 && proot[mid + 1] != k || mid ==length-1)
+//				return mid;
+//			else
+//				start = mid +1;
+//		}
+//		else if (proot[mid] > k)
+//			end = mid - 1;
+//		else
+//			start = mid + 1;
+//		return getlast(proot, length,k,start, end);
+//	}
+//};
+//
+//int main()
+//{
+//	vector<int >data= {1, 2, 3, 4, 4, 4, 5, 6, 6, 7};
+//	solution t1;
+//    int num=t1.num_main(data, 4);
+//	cout << "num: " << num << endl;
+//	cin.get(); cin.get();
+//}
+
+
+//面试题55
+//输入一棵二叉树，求该树的深度。从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的长度为树的深度。
+//struct TreeNode {
+//	int val;
+//	struct TreeNode *left;
+//	struct TreeNode *right;
+//	TreeNode(int x) :
+//			val(x), left(NULL), right(NULL) {
+//	}
+//};
+//class Solution {
+//public:
+//	int TreeDepth(TreeNode* pRoot)
+//	{
+//		if (pRoot == nullptr)
+//			return 0;
+//		int leftlen = TreeDepth(pRoot->left);
+//		int rightlen= TreeDepth(pRoot->right);
+//		if (leftlen >= rightlen)
+//			return 1 + leftlen;
+//		else
+//			return 1 + rightlen;
+//	}
+//};
+
+//面试题56
+//输入一棵二叉树，判断该二叉树是否是平衡二叉树。(注意与55的区别)
+//class Solution {
+//public:
+//	bool IsBalanced_Solution(TreeNode* pRoot) {
+//		int depth;
+//		return IsBalance(pRoot, &depth);
+//	}
+//	bool IsBalance(TreeNode*pRoot, int *depth)
+//	{
+//		if (pRoot == nullptr)
+//		{
+//			*depth = 0;
+//			return true;
+//		}
+//		int left, right;    //重要的参数，其赋值将在下一个递归中取得。
+//		if (IsBalance(pRoot->left, &left) && IsBalance(pRoot->right, &right))
+//		{
+//			int diff = left - right;
+//			if (diff <= 1 && diff >= -1)
+//			{
+//				*depth = 1 + (left >= right ? left : right);
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
+//};

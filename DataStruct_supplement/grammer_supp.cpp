@@ -209,9 +209,9 @@ using namespace std;
 //int main()
 //{
 //    //test1();
-////	test2(33, 2);
-//	int t3 = 1 >> 2;
-//	int t4 = 1 << 2;
+//    test2(29, 3);
+//	int t3 = 5 >> 1;
+//	int t4 = 5 << 2;
 //	cout << "t3: "<<t3<<" t4: "<<t4;
 //	cin.get(); cin.get();
 //}
@@ -267,7 +267,10 @@ using namespace std;
 //}
 // int main()
 // {
-//	 Test1();
+//	// Test1();
+//	 int num = 35;
+//	 int a = 1 << (num & 31);
+//	 cout << a;
 //	 cin.get(); cin.get();
 // }
 

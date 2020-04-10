@@ -1,12 +1,12 @@
 #include<iostream>
 #include<stdio.h>
 #include<list>
+using namespace std;
 
 
 
 
 //列表生成方式：（举例）
-using namespace std;
 //struct listnode
 //{
 //	int val;
