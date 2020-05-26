@@ -66,6 +66,18 @@
     <ClCompile Include="all_sort.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="DynamicProgram_sum.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Recursion.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="binarytree_note.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="important_grammar_c++.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_structe.h">

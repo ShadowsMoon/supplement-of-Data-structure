@@ -6,12 +6,74 @@
 #include<string>
 using namespace std;
 ////  https://blog.csdn.net/u010455041/article/details/50097251
-
-
+//char a[], char *a const char *a等的区别：https ://blog.csdn.net/u013654125/article/details/79758286
+//void atr(const char **a)
+//{
+//	if (**a == '+')                                      //**a位于常量存储区的数值，*a指向常量存储区数值的地址（地址内的值无法修改，但可以修改指向的地址）a表示指向*a这个地址的指针
+//		++(*a);
+//	cout << "*a: "<< *a << endl;
+//	cout << "a: " << a << endl;
+//}
+//void btr(char b[]) //b指向栈中地址
+//{
+//	if (*b == '+')
+//		++b;
+//	cout << "*b: " << *b << endl;
+//	cout << "b: " << b << endl;
+//}
+//int main()
+//{
+//	const char *a = "+110";
+//	const char*b1 = "+110";   //a和b1指向的都是常量存储区，因此地址一样
+//	char b[] = "+1012";
+//	atr(&a);       //函数输入的是a的名字地址，（指向的是a的第一个字符的地址），存储于栈，经过函数后，该栈的变量名称指向了a 的第二个，因此a打印发生变化
+//	btr(b);
+//	cout << "after function" << endl;
+//	cout << "a: " << a << endl;
+//	cout << "b1: " << b1 << endl;
+//	cout << "b: " << b << endl;
+//
+//
+//	char str1[] = "abc";
+//	char str2[] = "abc";
+//	const char str3[] = "abc";
+//	const char str4[] = "abc";
+//	const char *str5 = "abc";
+//	const char *str6 = "abc";
+////	char *str7 = "abc";   //在vs2017需要修改才能成立
+//	//char *str8 = "abc";
+//	cout << (str1 == str2) << endl;
+//	cout << (str3 == str4) << endl;
+//	cout << (str5 == str6) << endl;
+////	cout << (str7 == str8) << endl;
+//
+//	char ch1 = 'a';
+//	char ch2 = 'a';
+//	const char ch3 = 'a';
+//	const char ch4 = 'a';
+//
+//	cout << (ch1 == ch2) << endl;
+//	cout << (ch3 == ch4) << endl;
+//	cin.get(); cin.get();
+//}
 
 
 //int main()
 //{
+  
+   //	char *a = new char[5];
+//	string b = "123";
+//	a[0] = b[0]; a[1] = b[1]; a[2] = '\0';
+//	cout << a;*/
+//	string a;
+//	string b=to_string(1);    //
+//
+//	char *c = new char[5];
+//	c[0] = 1 + '0';
+//	c[1] = '\0';
+//	cout << c;
+
+
 //	int a = 2341, b = 234;
 //	string A = "";
 //	string B = "";

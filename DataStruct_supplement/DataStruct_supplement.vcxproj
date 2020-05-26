@@ -117,13 +117,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="all_sort.cpp" />
+    <ClCompile Include="binarytree_note.cpp" />
     <ClCompile Include="binarytree_op.cpp" />
     <ClCompile Include="BST_AVL.cpp" />
     <ClCompile Include="difficult_grammer.cpp" />
+    <ClCompile Include="DynamicProgram_sum.cpp" />
     <ClCompile Include="function_sum.cpp" />
     <ClCompile Include="algorithm_collect.cpp" />
     <ClCompile Include="grammer_supp.cpp" />
     <ClCompile Include="heap_operated.cpp" />
+    <ClCompile Include="important_grammar_c++.cpp" />
     <ClCompile Include="list_operated.cpp" />
     <ClCompile Include="offer67_algorithm.cpp" />
     <ClCompile Include="offer67_efficiency.cpp" />
@@ -131,6 +134,7 @@
     <ClCompile Include="offer67_mind.cpp" />
     <ClCompile Include="offfer_67_datastr.cpp" />
     <ClCompile Include="array_vector_operated.cpp" />
+    <ClCompile Include="Recursion.cpp" />
     <ClCompile Include="stack_queue_op.cpp" />
     <ClCompile Include="string_operated.cpp" />
   </ItemGroup>

@@ -7,10 +7,10 @@ using namespace std;
 
 
 //https://blog.csdn.net/latte_z/article/details/17049479
-#include<algorithm>    //sort 排序算法，默认从小到大，可以进行修改
+//#include<algorithm>    //sort 排序算法，默认从小到大，可以进行修改
 //bool cmp(int a, int b)
 //{
-//	if (a > b)
+//	if (a < b)
 //		return true;
 //	return false;
 //}

@@ -11,6 +11,7 @@
 
 using std::vector; using std::cout; using std::cin; using std::endl; using std::string;
 using std::multiset;        // multiset 和set 区别在于前者允许重复
+using std::set;
 using std::to_string;
 
 
@@ -550,3 +551,131 @@ using std::to_string;
 //		return false;
 //	}
 //};
+
+
+//面试题56  （难，巧妙，最优）
+//一个整型数组里除了两个数字之外，其他的数字都出现了两次。请写程序找出这两个只出现一次的数字。
+//首先思考 当其他数字都出现两次，而只有一个数字只出现一次时，考虑采用异或（相等的为0，不等的为1）时，剩下的就为只出现一次的
+//想法：考虑把数组分成两边各只包含一个只出现一次的数字，其他的都为两次的放在一组中。
+//如何分？ 因为整个数组异或完 就剩两个只出现一次的异或的结果（至少有一位为1），选择为1 的一位，对照所有的数字分成这位为1的和没有1的，可以保证想法2
+//class Solution {
+//public:
+//	void FindNumsAppearOnce(vector<int> data, int* num1, int *num2) {
+//		if (data.size() <= 0)
+//			return;
+//		int resultXor = 0;
+//		for (int i = 0; i < data.size(); i++)
+//			resultXor ^= data[i];             // 异或操作，得到只有出现一次的值的异或结果
+//		int indexOne = indexfirst(resultXor);
+//		*num1 = *num2 = 0;
+//		for (int i = 0; i < data.size(); i++)
+//		{
+//			if ((data[i] >> indexOne) & 1 == 1) //确定在第indexOne为是否为1
+//				*num1 = (*num1) ^ data[i];
+//			else
+//				*num2 = (*num2) ^ data[i];
+//		}
+//	}
+//	int indexfirst( int resultX)
+//	{                                                 //该函数确定该数值的二进制中第一个为1 的在第几位？
+//		int indexO = 0;
+//		while ((resultX & 1) == 0&&(indexO<8*sizeof(int)))   //注意位运算的细节 ,resultx&1确定最低位是否为1
+//		{
+//			resultX=resultX >> 1;                   
+//			++indexO;
+//		}
+//		return indexO;
+//	}
+//};
+
+//第二种解决方式  需O(n)空间
+//class Solution {
+//public:
+//	void FindNumsAppearOnce(vector<int> data, int* num1, int *num2) {
+//		set<int> save;
+//		set<int>::iterator iter;
+//		for (int i = 0; i < data.size(); i++) {
+//			if (save.find(data[i]) == save.end())    //set 的特点是，不论该元素的大小，当未找到该元素时，会返回最后的地址end。
+//				save.insert(data[i]);
+//			else {
+//				iter = save.find(data[i]);
+//				save.erase(iter);
+//			}
+//		}
+//		iter = save.begin();
+//		*num1 = *iter;
+//		*num2 = *(++iter);
+//	}
+//};
+//解法3（时间复杂度高）：//使用堆栈来做辅助功能，将数组先排序，依次入栈，
+//每一次数组入栈时和当前堆栈的栈头比较，如果当前堆栈为空，就入栈，如果和当前栈头的元素相同就出栈，
+//
+//
+//int main()
+//{
+//	vector<int>t1 = { 2,4,3,6,3,2,5,5 };
+//	Solution te;
+//	int f1 = 0, f2 = 0;
+//	te.FindNumsAppearOnce(t1, &f1, &f2);
+//	cout << "f1: " << f1 << " f2:" << f2;
+//
+//	cin.get(); cin.get();
+//}
+
+
+
+//面试题57：输出所有和为S的连续正数序列。序列内按照从小至大的顺序，序列间按照开始数字从小到大的顺序
+//审清题目，需要连续的正整数，彼此间相差为 1
+
+//class Solution {
+//public:
+//	vector<vector<int> > FindContinuousSequence(int sum) {
+//		vector<vector<int> > allRes;
+//		int phigh = 2, plow = 1;
+//
+//		while (phigh > plow) {
+//			int cur = (phigh + plow) * (phigh - plow + 1) / 2;
+//			if (cur < sum)
+//				phigh++;
+//
+//			if (cur == sum) {
+//				vector<int> res;
+//				for (int i = plow; i <= phigh; i++)
+//					res.push_back(i);
+//				allRes.push_back(res);
+//				plow++;
+//			}
+//
+//			if (cur > sum)
+//				plow++;
+//		}
+//
+//		return allRes;
+//	}
+//};
+//
+//
+//int main()
+//{
+//	Solution t1;
+//    vector<vector<int>>collect=	t1.FindContinuousSequence(15);
+//	for (int i = 0; i <= collect.size() - 1; i++)
+//	{
+//		vector<int>*record = new vector<int>{ collect[i] };
+//		for (int j = 0; j < (*record).size(); j++)
+//		{
+//
+//			cout <<(*record)[j]<<endl;
+//		}
+//	}
+//	cin.get(); cin.get();
+//}
+
+//面试题（Transmission）：输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。
+//，具体代码转移到 offer67_algorithnm
+
+
+//面试题：汇编语言中有一种移位指令叫做循环左移（ROL），现在有个简单的任务，就是用字符串模拟这个指令的运算结果。
+//对于一个给定的字符序列S，请你把其循环左移K位后的序列输出。例如，字符序列S=”abcXYZdef”,要求输出循环左移3位后的结果，即“XYZdefabc”。
+//是不是很简单？OK，搞定它！
+//具体代码转移到 offer67_algorithnm

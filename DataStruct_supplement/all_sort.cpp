@@ -78,6 +78,33 @@ public:
 		QuickSort(proot, lo, low - 1);
 		QuickSort(proot, low + 1, hi);   //注意，这里递归调用变量必须为括号中，而不是(low+1,hig),此时low=hig
 	}
+
+	void quick_way2(vector<int>::iterator proot, int lo, int hi)
+	{
+		if (lo >= hi)
+			return;
+		int pivoty = proot[lo];
+		int low = lo,hig = hi;
+		while (low < hig)
+		{
+			while (low < hig&&proot[hig] >= pivoty)
+				hig--;
+			while (low < hig&&proot[lo] <= pivoty)
+				low++;
+			if (low < hig)
+			{
+				proot[hig] = proot[hig] + proot[low];
+				proot[low] = proot[hig] - proot[low];
+				proot[hig] = proot[hig] - proot[low];
+			}
+
+		}
+		proot[lo] = proot[low];                   //把基准数和最后停止位置的数交换
+		proot[low] = pivoty;
+		quick_way2(proot, lo, low);
+		quick_way2(proot, low + 1, hig);
+	}
+	
 };
 
 //简单选择排序：描述：给定待排序序列A[ 1......n ] ，选择出第i小元素，并和A[i]交换，这就是一趟简单选择排序。
@@ -109,6 +136,36 @@ class SimpleSelectSort_test {
 };
 
 
+class bubblesort {
+public:
+	void bubble_test(vector<int>&a)
+	{
+		bool sortindex = false;
+		while (!sortindex)
+		{
+			sortindex = true;
+			int len = a.size();
+			for (int i = 1; i<len; i++)
+			{
+				if (a[i - 1] > a[i])
+				{
+					swap(a, i);
+					sortindex = false;
+				}
+
+			}
+			len--;
+		}
+	}
+	void swap(vector<int>&a,int n)
+	{
+		a[n - 1] = a[n - 1] + a[n];
+		a[n] = a[n - 1] - a[n];
+		a[n - 1] = a[n - 1] - a[n];
+	}
+};
+
+
 //void test1()
 //{
 //	vector<int>test1 = { 6,3,2,7,1,5,8,4 };
@@ -116,8 +173,11 @@ class SimpleSelectSort_test {
 //	//t1.merge_main(test1.begin(), 0, 7);
 //	//SimpleSelectSort_test t1;
 //	//t1.SelectSort_main(test1.begin(), 0, 7);
-//	quickSort_test t1;
-//	t1.QuickSort(test1.begin(), 0, 7);
+//	//quickSort_test t1;
+//	//t1.QuickSort(test1.begin(), 0, 7);
+//
+//	bubblesort t1;
+//	t1.bubble_test(test1);
 //	for (int i = 0; i < test1.size(); i++)
 //		cout << test1[i];
 //}
@@ -215,3 +275,5 @@ class SimpleSelectSort_test {
 //	}
 //	return 0;
 //}
+
+

@@ -14,6 +14,30 @@ using std::multiset;        // multiset 和set 区别在于前者允许重复
 using std::to_string;
 
 
+using std::less; //最大堆
+using std::greater; //最小堆
+//int main()
+//{
+//	vector<int> nums = { 4, 5, 1, 3, 2 ,8 ,7 };
+//	// generate heap in the range of numsector
+//	make_heap(nums.begin(), nums.end(), less<int>());//make_heap将[start, end)范围进行堆排序，默认使用less, 即最大元素放在第一个
+//	cout << "initial max value : " << nums.front() << endl;
+//	// pop max value
+//	pop_heap(nums.begin(), nums.end(), less<int>());  //将front（即第一个最大元素）移动到end的前部，同时将剩下的元素重新构造成(堆排序)一个新的heap
+//	nums.pop_back();
+//	cout << "after pop, the max vsalue : " << nums.front() << endl;
+//	// push a new value
+//	nums.push_back(6);
+//	push_heap(nums.begin(), nums.end(), less<int>()); //push_heap对刚插入的（尾部）元素做堆排序。
+//	cout << "after push, the max value : " << nums.front() << endl;
+//	system("pause");
+//	return 0;
+//}
+
+//sort_heap将一个堆做排序,最终成为一个有序的系列，可以看到sort_heap时，必须先是一个堆
+//（两个特性：1、最大元素在第一个 2、添加或者删除元素以对数时间），因此必须先做一次make_heap.
+
+
 //https ://blog.csdn.net/touch_2011/article/details/6767673
 //选择排序
 //void SimpleSelectSort(int *a, int n)

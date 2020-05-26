@@ -1,10 +1,22 @@
-#include<vector>
 #include<iostream>
-#include<stdio.h>
-#include<ctime>
 #include <cstdio>
-#include <string>
-#include <stack>
+#include<vector>
+#include<stack>
+#include<list>
+#include <cstdio>
+#include<string>
+#include<ctime>
+#include<algorithm>
+#include<set>
+#include <functional>    //greater<int> //内置类型的由大到小排序   相反的为 less<int>
+
+using std::vector; using std::cout; using std::cin; using std::endl; using std::string;
+using std::multiset;        // multiset 和set 区别在于前者允许重复
+using std::set;
+using std::to_string;
+using std::stack;
+using std::sort;
+using std::list;
 //面试题10：递归和循环， Fib数列
 //using std::cout; using std::cin; using std::endl;
 //int fib_r(int n)     //普通递归
@@ -310,3 +322,398 @@
 //}
 
 
+//面试题（原offer67_efficiency）：输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。
+//class Solution {
+//public:
+//	vector<int> FindNumbersWithSum(vector<int> array, int sum) {
+//		int small=0, big=array.size()-1;
+//		int cursum = array[small] + array[big];
+//		int curpro = sum*sum;
+//		int *record = new int[2];
+//		while (small < big)
+//		{
+//			if (cursum == sum)
+//			{
+//				if (curpro > array[small] * array[big])
+//				{
+//					record[0] = array[small]; record[1]=array[big];
+//					curpro = array[small] * array[big];
+//				}
+//				++small;
+//			}
+//			else if (cursum < sum)
+//			{
+//				cursum -= array[small];
+//				small += 1;
+//				cursum+=array[small];
+//			}
+//			else
+//			{
+//				cursum -= array[big];
+//				big-=1;
+//				cursum += array[big];
+//			}
+//		}
+//		if (record[0]+record[1] ==sum)
+//		{
+//			vector<int>final = { record[0],record[1] };
+//			return final;
+//		}
+//		vector<int>final;
+//		return final;
+//	}
+//};
+//int main()
+//{
+//	vector<int>t1 = { 1,2,4,7,11,16 };
+//	Solution te;
+//   vector<int>final=te.FindNumbersWithSum(t1,10);
+//   cin.get(); cin.get();
+//   return 0;
+//}
+
+
+
+//面试题：汇编语言中有一种移位指令叫做循环左移（ROL），现在有个简单的任务，就是用字符串模拟这个指令的运算结果。
+//对于一个给定的字符序列S，请你把其循环左移K位后的序列输出。例如，字符序列S=”abcXYZdef”,要求输出循环左移3位后的结果，即“XYZdefabc”。
+//是不是很简单？OK，搞定它！
+//class Solution {
+//public:
+//	string LeftRotateString(string str, int n) {
+//		int len = str.size();
+//		if (n >= len)
+//			n = n %len;
+//		string copy(str, 0, n);
+//		str.erase(str.begin(), str.begin() + n);
+//		str = str + copy;
+//		return str;
+//	}
+//};
+//
+//
+//
+////解法2：YX = (XTY T)T
+//class Solution {
+//public:
+//	string LeftRotateString(string str, int n)
+//	{
+//		int len = str.size();
+//		if (len == 0) return str;
+//		n %= len;
+//		for (int i = 0, j = n - 1; i < j; ++i, --j) swap(str[i], str[j]);
+//		for (int i = n, j = len - 1; i < j; ++i, --j) swap(str[i], str[j]);
+//		for (int i = 0, j = len - 1; i < j; ++i, --j) swap(str[i], str[j]);
+//		return str;
+//	}
+//};
+//int main()
+//{
+//	string str = { "abcxyzdef" };
+//	Solution te;
+//   string final=	te.LeftRotateString(str, 3);
+//   for (int i = 0; i < final.size() - 1; i++)
+//	   cout << final[i];
+//   cin.get(); cin.get();
+//   return 0;
+//}
+
+
+
+//面试题
+//牛客最近来了一个新员工Fish，每天早晨总是会拿着一本英文杂志，写些句子在本子上。同事Cat对Fish写的内容颇感兴趣，
+//有一天他向Fish借来翻看，但却读不懂它的意思。例如，“student. a am I”。后来才意识到，这家伙原来把句子单词的顺序翻转了，
+//正确的句子应该是“I am a student.”。Cat对一一的翻转这些单词顺序可不在行，你能帮助他么？
+
+//class Solution {
+//public:
+//	string ReverseSentence(string str) {
+//		int len = str.size();
+//		if (len < 2)
+//			return str;
+//		stack<string>record;
+//		int i = 0, index = 0, record_len = 0;
+//	    while(index<=len)       //关键点使用两个指示来移动，并且要到达最后一位还要向后面一位
+//		{
+//			if (str[index] == ' ')
+//			{
+//				++index; ++i;
+//			}
+//			else if (str[i] == ' '||str[i]=='\0')
+//			{
+//				record_len = i - index;
+//				string *tem = new string(str, index, record_len);      //前面的index表示起点，后面的表示个数
+//				record.push(*tem+' ');
+//				delete tem;
+//				index = ++i;
+//			}
+//			else
+//				i++;
+//			
+//		}
+//	string final;
+//	while (!record.empty())
+//	{
+//		final = final + record.top();
+//		record.pop();
+//	}
+//	final.erase(final.end() - 1);
+//	return final;
+//	}
+//};
+//
+//int main()
+//{
+//	string t1 = "student. a am i";
+//	Solution te;
+//	string final = te.ReverseSentence(t1);
+//	int len = final.size()-1;
+//	int i = 0;
+//	while (i<=len)
+//	{
+//		cout << final[i];
+//		++i;
+//	}
+//	cout << "final";
+//	cin.get(); cin.get();
+//}
+
+//面试题
+//请实现一个函数用来匹配包括'.'和'*'的正则表达式。
+//模式中的字符'.'表示任意一个字符，而'*'表示它前面的字符可以出现任意次（包含0次）。
+//在本题中，匹配是指字符串的所有字符匹配整个模式。
+//例如，字符串"aaa"与模式"a.a"和"ab*ac*a"匹配，但是与"aa.a"和"ab*a"均不匹配
+
+
+
+
+//面试题
+//有2个大王,2个小王，“红心A,黑桃3,小王,大王,方片5”,“Oh My God!”不是顺子.....
+//LL不高兴了,他想了想,决定大\小 王可以看成任何数字,并且A看作1,J为11,Q为12,K为13。上面的5张牌就可以变成“1,2,3,4,5”(大小王分别看作2和4)
+//如果牌能组成顺子就输出true，否则就输出false。为了方便起见,你可以认为大小王是0。
+//class Solution {
+//public:
+//	bool IsContinuous(vector<int> numbers) {
+//		sort(numbers.begin(), numbers.end());
+//		int i = 0,final=numbers.size()-1;
+//		while (i<=final&& numbers[i] == 0)
+//		{
+//			++i;
+//		}
+//		if (i >= final)
+//			return true;
+//		if (numbers[final] - numbers[i] > final)
+//			return false;
+//		int changecard = i;
+//		int temp = numbers[i]-1;
+//		for (int jj = i; jj <= final;)
+//		{
+//			if (numbers[jj] == temp + 1)
+//			{
+//				temp = numbers[jj];
+//				jj += 1;
+//			}
+//			else if (changecard > 0&& numbers[jj] > temp)
+//			{
+//				temp = temp+ 1;
+//				changecard--;
+//			}
+//			else
+//				return false;
+//		}
+//		return true;
+//	}
+//};
+//
+//void Test1()
+//{
+//	vector<int> numbers = { 1, 3, 2, 5, 4 };
+//	Solution t1;
+//	if (t1.IsContinuous(numbers))
+//		cout << "Test1 true" << endl;
+//}
+//
+//void Test2()
+//{
+//	vector<int> numbers = { 1, 3, 2, 6, 4 };
+//	Solution t1;
+//	if (!t1.IsContinuous(numbers))
+//		cout << "Test2 true" << endl;
+//}
+//
+//void Test3()
+//{
+//	vector<int> numbers = { 0, 3, 2, 6, 4 };
+//	Solution t1;
+//	if (t1.IsContinuous(numbers))
+//		cout << "Test3 true" << endl;
+//}
+//
+//void Test4()
+//{
+//	vector<int> numbers = { 0, 3, 1, 6, 4 };
+//	Solution t1;
+//	if (!t1.IsContinuous(numbers))
+//		cout << "Test4 true" << endl;
+//}
+//
+//void Test5()
+//{
+//	vector<int> numbers = { 1, 3, 0, 5, 0 };
+//	Solution t1;
+//	if (t1.IsContinuous(numbers))
+//		cout << "Test5 true" << endl;
+//}
+//
+//
+//void Test7()
+//{
+//	vector<int> numbers = { 1, 0, 0, 5, 0 };
+//	Solution t1;
+//	if (t1.IsContinuous(numbers))
+//		cout << "Test7 true" << endl;
+//}
+//
+//void Test8()
+//{
+//	vector<int> numbers = { 1, 0, 0, 7, 0 };
+//	Solution t1;
+//	if (!t1.IsContinuous(numbers))
+//		cout << "Test8 true" << endl;
+//}
+//
+//void Test9()
+//{
+//	vector<int> numbers = { 3, 0, 0, 0, 0 };
+//	Solution t1;
+//	if (t1.IsContinuous(numbers))
+//		cout << "Test9 true" << endl;
+//}
+//
+//void Test10()
+//{
+//	vector<int> numbers = { 0, 0, 0, 0, 0 };
+//	Solution t1;
+//	if (t1.IsContinuous(numbers))
+//		cout << "Test10 true" << endl;
+//}
+//
+//int main()
+//{
+//	Test1();
+//	Test2();
+//	Test3();
+//	Test4();
+//	Test5();
+//	Test7();
+//	Test8();
+//	Test9();
+//	Test10();
+//	cin.get(); cin.get();
+//}
+
+
+
+// 面试题62：圆圈中最后剩下的数字
+// 题目：0, 1, …, n-1这n个数字排成一个圆圈，从数字0开始每次从这个圆圈里
+// 删除第m个数字。求出这个圆圈里剩下的最后一个数字。
+
+//传统方法：用stl中的list（双向链表）来模拟圆形链表：本质，当抵达最后end时，转向begin即可
+//class Solution {    //高复杂度
+//public:
+//	int LastRemaining_Solution(int n, int m)
+//	{
+//		if (n < 1 || m < 1)   //边界调节
+//			return -1;
+//		list<int>numbers;
+//		for (int i = 0; i < n; ++i)
+//			numbers.push_back(i);
+//		list<int>::iterator iter = numbers.begin();
+//		while (n > 1)
+//		{
+//			for (int j = 1; j < m; j++)    //当j=0，跳出循环后 指向的时第m+1个数。
+//			{
+//				++iter;
+//				if(iter==numbers.end())
+//					iter= numbers.begin();
+//			}
+//			list<int>::iterator curr = iter;
+//			++iter;
+//			if (iter == numbers.end())
+//				iter = numbers.begin();
+//			numbers.erase(curr);
+//			--n;
+//		}
+//		return *iter;
+//	}
+//};
+
+
+//具体推导过程有待理解,  详细请看https://blog.csdn.net/wusuopubupt/article/details/18214999
+//class Solution {
+//public:
+//	int LastRemaining_Solution(int n, int m)
+//	{
+//		if (n < 1 || m < 1)
+//			return -1;
+//
+//		int last = 0;
+//		for (int i = 2; i <= n; i++)
+//			last = (last + m) % i;
+//
+//		return last;
+//	}
+//};
+//
+//void Test(const char* testName, unsigned int n, unsigned int m, int expected)
+//{
+//	if (testName != nullptr)
+//		cout<<testName<<endl;
+//	Solution tt;
+//	if (tt.LastRemaining_Solution(n, m) == expected)
+//		cout<<"Solution1 passed"<<endl;
+//	else
+//		cout << "Solution1 false" << endl;
+//}
+//
+//
+//void Test1()
+//{
+//	Test("Test1", 5, 3, 3);
+//}
+//
+//void Test2()
+//{
+//	Test("Test2", 5, 2, 2);
+//}
+//
+//void Test3()
+//{
+//	Test("Test3", 6, 7, 4);
+//}
+//
+//void Test4()
+//{
+//	Test("Test4", 6, 6, 3);
+//}
+//
+//void Test5()
+//{
+//	Test("Test5", 0, 0, -1);
+//}
+//
+//void Test6()
+//{
+//	Test("Test6", 4000, 997, 1027);
+//}
+//
+//int main(int argc, char* argv[])
+//{
+//	Test1();
+//	Test2();
+//	Test3();
+//	Test4();
+//	Test5();
+//	Test6();
+//	cin.get(); cin.get();
+//	return 0;
+//}
